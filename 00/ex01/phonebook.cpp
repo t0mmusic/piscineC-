@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*	I think printf is forbidden? Maybe?	 Also namespaces??? */
+
 #include <iostream>
 #include <string.h>
 #include <cstdio>
@@ -42,23 +44,78 @@ void	fifo(PhoneBook *phone)
 	}
 }
 
-//Need a check to ensure that only one string is input.
-//Maybe also make sure phone number is numberic?
+int	check_empty(string str)
+{
+	if (str == "")
+	{
+		std::cout << "Please enter something." << std::endl;
+		return (1);
+	}
+	return (0);
+}
+
+string	check_spaces(void)
+{
+	string	line;
+	int		i;
+
+	std::getline(std::cin, line);
+	while (check_empty(line))
+		std::getline(std::cin, line);
+	i = 0;
+	while (line[i])
+	{
+		if (isspace(line[i]))
+		{
+			std::cout << "Only one word, please." << std::endl;
+			std::getline(std::cin, line);
+			i = -1;
+		}
+		i++;
+	}
+	return (line);
+}
+
+string	check_phone(void)
+{
+	string	line;
+	int		i;
+
+	std::getline(std::cin, line);
+	while (check_empty(line))
+		std::getline(std::cin, line);
+	i = 0;
+	while (line[i])
+	{
+		if (isalpha(line[i]))
+		{
+			std::cout << "Phone number must not contain alphabetical characters." << std::endl;
+			std::getline(std::cin, line);
+			i = -1;
+		}
+		i++;
+	}
+	return (line);
+}
 
 void	add_contact(PhoneBook *phone)
 {
 	Contact	book;
 
 	std::cout << "Enter first name: " << std::endl;
-	std::cin >> book.first_name;
+	book.first_name = check_spaces();
 	std::cout << "Enter last name: " << std::endl;
-	std::cin >> book.last_name;
+	book.last_name = check_spaces();
 	std::cout << "Enter nick name: " << std::endl;
-	std::cin >> book.nick_name;
+	std::getline(std::cin, book.nick_name);
+	while (check_empty(book.nick_name))
+		std::getline(std::cin, book.nick_name);
 	std::cout << "Enter phone number: " << std::endl;
-	std::cin >> book.phone_number;
+	book.phone_number = check_phone();
 	std::cout << "Enter darkest secret: " << std::endl;
-	std::cin >> book.darkest_secret;
+	std::getline(std::cin, book.darkest_secret);
+	while (check_empty(book.darkest_secret))
+		std::getline(std::cin, book.darkest_secret);
 	if (phone->num == 8)
 	{
 		fifo(phone);
@@ -66,7 +123,8 @@ void	add_contact(PhoneBook *phone)
 	}
 	else
 	{
-		phone->phone_book[phone->num] = book;	phone->num++;
+		phone->phone_book[phone->num] = book;
+		phone->num++;
 	}
 	system("clear");
 }
@@ -98,6 +156,11 @@ void	print_contact(Contact contact, int index)
 
 void	print_detailed(Contact contact)
 {
+	if (contact.first_name == "")
+	{
+		std::cout << "Contact is empty." << std::endl;
+		return ;
+	}
 	std::cout << "First Name: ";
 	std::cout << contact.first_name << std::endl;
 	std::cout << "Last Name: ";
@@ -120,9 +183,14 @@ void	find_contact(PhoneBook *book)
 	while (++i < 9)
 		print_contact(book->phone_book[i - 1], i);
 	printf("-----------------------\n");
-	std::cout << "Enter the index of the contact you are searching for: " << std::endl;
-	std::cin >> str;
+	std::cout << "Enter the index of the contact you are searching for (0 to cancel): " << std::endl;
+	std::getline(std::cin, str);
 	i = atoi(str.c_str());
+	if (str == "0")
+	{
+		system("clear");
+		return ;
+	}
 	if (i < 1 || i > 8)
 	{
 		system("clear");
@@ -147,21 +215,21 @@ int	main(void)
 	{
 		input = "";
 		std::cout << "Pick an option: " << std::endl;
-		std::cout << "ADD to add new contact." << std::endl;
-		std::cout << "SEARCH to find a contact." << std::endl;
-		std::cout << "EXIT to exit." << std::endl;
-		std::cin >> input;
-		if (input == "ADD")
+		std::cout << "1. ADD to add new contact." << std::endl;
+		std::cout << "2. SEARCH to find a contact." << std::endl;
+		std::cout << "3. EXIT to exit." << std::endl;
+		std::getline(std::cin, input);
+		if (input == "ADD" || input == "1")
 		{
 			system("clear");
 			add_contact(&book);
 		}
-		else if (input == "SEARCH")
+		else if (input == "SEARCH" || input == "2")
 		{
 			system("clear");
 			find_contact(&book);
 		}
-		else if (input == "EXIT")
+		else if (input == "EXIT" || input == "3")
 		{
 			exit (0);
 		}
