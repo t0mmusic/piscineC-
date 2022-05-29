@@ -10,31 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*	I think printf is forbidden? Maybe?	 Also namespaces??? */
-
 #include <iostream>
-#include <string.h>
-#include <cstdio>
-#include <unistd.h>
 #include <stdlib.h>
-using namespace std;
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-class	Contact
-{
-	public:
-	string	first_name;
-	string	last_name;
-	string	nick_name;
-	string	phone_number;
-	string	darkest_secret;
-};
+PhoneBook::PhoneBook(void){
+	return;
+}
 
-class	PhoneBook
-{
-	public:
-	Contact	phone_book[8];
-	int		num;
-};
+PhoneBook::~PhoneBook(void){
+	return;
+}
 
 void	fifo(PhoneBook *phone)
 {
@@ -44,19 +31,19 @@ void	fifo(PhoneBook *phone)
 	}
 }
 
-int	check_empty(string str)
+int	check_empty(std::string str)
 {
 	if (str == "")
 	{
-		std::cout << "Please enter something." << std::endl;
+		std::cout << "Entry can not be left blank." << std::endl;
 		return (1);
 	}
 	return (0);
 }
 
-string	check_spaces(void)
+std::string	check_spaces(void)
 {
-	string	line;
+	std::string	line;
 	int		i;
 
 	std::getline(std::cin, line);
@@ -76,9 +63,9 @@ string	check_spaces(void)
 	return (line);
 }
 
-string	check_phone(void)
+std::string	check_phone(void)
 {
-	string	line;
+	std::string	line;
 	int		i;
 
 	std::getline(std::cin, line);
@@ -129,29 +116,38 @@ void	add_contact(PhoneBook *phone)
 	system("clear");
 }
 
-void	string_limiter(string str)
+void	string_limiter(std::string str)
 {
+	int	rem;
+
 	if (str.length() > 10)
 	{
-		printf("%.9s", str.c_str());
-		printf(".");
+		std::cout << str.substr(0, 9);
+		std::cout << ".";
 	}
 	else
 	{
-		printf("%10s", str.c_str());
+		rem = 10 - str.length();
+		while (rem)
+		{
+			std::cout << ' ';
+			rem--;
+		}
+		std::cout << str;
 	}
 }
 
 void	print_contact(Contact contact, int index)
 {
-	printf("%10i", index);
+	std::cout << "         ";
+	std::cout << index;
 	std::cout << "|";
 	string_limiter(contact.first_name);
 	std::cout << "|";
 	string_limiter(contact.last_name);
 	std::cout << "|";
 	string_limiter(contact.nick_name);
-	printf("\n");
+	std::cout << std::endl;
 }
 
 void	print_detailed(Contact contact)
@@ -159,6 +155,7 @@ void	print_detailed(Contact contact)
 	if (contact.first_name == "")
 	{
 		std::cout << "Contact is empty." << std::endl;
+		std::cout << "-----------------------" << std::endl;
 		return ;
 	}
 	std::cout << "First Name: ";
@@ -171,18 +168,18 @@ void	print_detailed(Contact contact)
 	std::cout << contact.phone_number << std::endl;
 	std::cout << "Darkest Secret: ";
 	std::cout << contact.darkest_secret << std::endl;
-	printf("-----------------------\n");
+	std::cout << "-----------------------" << std::endl;
 }
 
 void	find_contact(PhoneBook *book)
 {
-	int		i = 0;
-	string	str;
+	int			i = 0;
+	std::string	str;
 
 	std::cout << "     Index|First Name| Last Name| Nick Name" << std::endl;
 	while (++i < 9)
 		print_contact(book->phone_book[i - 1], i);
-	printf("-----------------------\n");
+	std::cout << "-------------------------------------------" << std::endl;
 	std::cout << "Enter the index of the contact you are searching for (0 to cancel): " << std::endl;
 	std::getline(std::cin, str);
 	i = atoi(str.c_str());
@@ -206,14 +203,13 @@ void	find_contact(PhoneBook *book)
 
 int	main(void)
 {
-	string		input;
+	std::string	input;
 	PhoneBook	book;
 
 	book.num = 0;
 	system("clear");
 	while (1)
 	{
-		input = "";
 		std::cout << "Pick an option: " << std::endl;
 		std::cout << "1. ADD to add new contact." << std::endl;
 		std::cout << "2. SEARCH to find a contact." << std::endl;

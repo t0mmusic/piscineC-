@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 12:37:44 by jbrown            #+#    #+#             */
-/*   Updated: 2022/05/26 13:29:04 by jbrown           ###   ########.fr       */
+/*   Created: 2022/05/29 14:14:18 by jbrown            #+#    #+#             */
+/*   Updated: 2022/05/29 14:14:18 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Contact.hpp"
 
-void	ft_toupper(char *str)
-{
-	int	i;
+/*	Constructor for the Contact class.	*/
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
-		i++;
-	}
+Contact::Contact(void){
+	return;
 }
 
-int	main(int ac, char **av)
-{
-	int	i;
-	if (ac == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-		return (0);
-	}
-	i = 0;
-	while (++i < ac)
-	{
-		ft_toupper(av[i]);
-		std::cout << av[i];
-	}
-	std::cout << "\n";
-	return (0);
+/*	Destructor for the Contact class.	*/
+
+Contact::~Contact(void){
+	return;
 }

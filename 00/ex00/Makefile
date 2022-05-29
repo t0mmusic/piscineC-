@@ -26,7 +26,7 @@ $(NAME):
 	$(COMPILE) $(FLAGS) $(FLAGS_PLUS) $(SRC) -o $(NAME)
 
 clean:
-	rm $(NAME)
+	rm  -f $(NAME)
 
 re: clean all
 
