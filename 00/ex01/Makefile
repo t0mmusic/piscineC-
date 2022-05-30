@@ -14,11 +14,11 @@ NAME = phonebook
 
 COMPILE = c++
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = *.cpp
+SRCS = PhoneBook.cpp Contact.cpp main.cpp
 
 all: $(NAME)
 
