@@ -6,9 +6,12 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:18:38 by jbrown            #+#    #+#             */
-/*   Updated: 2022/05/30 16:59:34 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/06/02 16:08:50 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
 #include "Weapon.hpp"
 
@@ -26,3 +29,5 @@ class	HumanB
 	std::string	name;
 	Weapon		tool;
 };
+
+#endif
