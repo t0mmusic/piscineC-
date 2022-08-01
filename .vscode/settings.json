@@ -12,6 +12,17 @@
 		"locale": "cpp",
 		"ostream": "cpp",
 		"streambuf": "cpp",
-		"algorithm": "cpp"
+		"algorithm": "cpp",
+		"__errc": "cpp",
+		"__split_buffer": "cpp",
+		"__string": "cpp",
+		"chrono": "cpp",
+		"deque": "cpp",
+		"fstream": "cpp",
+		"iomanip": "cpp",
+		"ratio": "cpp",
+		"stack": "cpp",
+		"string_view": "cpp",
+		"system_error": "cpp"
 	}
 }

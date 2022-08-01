@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,178 +11,43 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <string.h>
-using namespace std;
-
-class	Contact
-{
-	public:
-	string	first_name;
-	string	last_name;
-	string	nick_name;
-	string	phone_number;
-	string	darkest_secret;
-};
-
-class	PhoneBook
-{
-	public:
-	Contact	phone_book[8];
-	int		num;
-};
-
-void	fifo(PhoneBook phone)
-{
-	for (int i = 0; i < 7 ; i++)
-	{
-		phone.phone_book[i] = phone.phone_book[i + 1];
-	}
-}
-
-void	add_contact(PhoneBook *phone)
-{
-	Contact	book;
-
-		std::cout << "Enter first name: " << std::endl;
-		std::cin >> book.first_name;
-		std::cout << "Enter last name: " << std::endl;
-		std::cin >> book.last_name;
-		std::cout << "Enter nick name: " << std::endl;
-		std::cin >> book.nick_name;
-		std::cout << "Enter phone number: " << std::endl;
-		std::cin >> book.phone_number;
-		std::cout << "Enter darkest secret: " << std::endl;
-		std::cin >> book.darkest_secret;
-	if (phone->num == 7)
-	{
-		fifo(*phone);
-		phone->phone_book[7] = book;
-	}
-	else
-	{
-		phone->phone_book[phone->num] = book;
-		phone->num++;
-	}
-}
-
-void	string_limiter(string str)
-{
-	if (str.length() > 10)
-	{
-		printf("%9s", str.c_str());
-		printf(".");
-	}
-	else
-	{
-		printf("%10s", str.c_str());
-	}
-}
-
-void	print_contact(Contact contact, int index)
-{
-	printf("%10i", index);
-//	std::cout << index;
-	std::cout << " | ";
-	string_limiter(contact.first_name);
-//	std::cout << contact.first_name;
-	std::cout << " | ";
-	string_limiter(contact.last_name);
-//	std::cout << contact.last_name;
-	std::cout << " | ";
-	string_limiter(contact.nick_name);
-//	std::cout << contact.nick_name << std::endl;
-	printf("\n");
-}
-
-void	find_contact(PhoneBook *book)
-{
-	int		i = 0;
-	string	str;
-
-	while (++i < 9)
-		print_contact(book->phone_book[i - 1], i);
-	std::cout << "Enter the index of the contact you are searching for: " << std::endl;
-	std::cin >> str;
-	i = atoi(str.c_str());
-	if (i < 1 || i > 8)
-		std::cout << "Invalid Index!" << std::endl;
-	else
-		print_contact(book->phone_book[i - 1], i);
-}
-
-int	main(void)
-{
-	string		input;
-	PhoneBook	book;
-
-	book.num = 0;
-	while (1)
-	{
-		std::cout << "Pick an option: " << std::endl;
-		std::cout << "ADD to add new contact." << std::endl;
-		std::cout << "SEARCH to find a contact." << std::endl;
-		std::cout << "EXIT to exit." << std::endl;
-		std::cin >> input;
-		if (input == "ADD")
-		{
-			add_contact(&book);
-			print_contact(book.phone_book[0], 1);
-			input = "";
-		}
-		else if (input == "SEARCH")
-		{
-			find_contact(&book);
-		}
-		else if (input == "EXIT")
-		{
-			exit (0);
-		}
-		else
-		{
-			system("clear");
-			std::cout << "Please choose a valid option." << std::endl;
-		}
-	}
-	return (0);
-}
-=======
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 14:36:18 by jbrown            #+#    #+#             */
-/*   Updated: 2022/05/26 17:28:25 by jbrown           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <iostream>
-#include <string.h>
-#include <cstdio>
-#include <unistd.h>
 #include <stdlib.h>
-using namespace std;
 
-class	Contact
+#include "PhoneBook.hpp"
+
+/*	Constructor for PhoneBook class.	*/
+
+PhoneBook::PhoneBook(void)
 {
-	public:
-	string	first_name;
-	string	last_name;
-	string	nick_name;
-	string	phone_number;
-	string	darkest_secret;
-};
+	this->num = 0;
+	return;
+}
 
-class	PhoneBook
+/*	Destructor for PhoneBook class.	*/
+
+PhoneBook::~PhoneBook(void)
 {
-	public:
-	Contact	phone_book[8];
-	int		num;
-};
+	return;
+}
 
-void	fifo(PhoneBook *phone)
+/*	Getters.	*/
+
+int		PhoneBook::get_num(void)
+{
+	return (num);
+}
+
+/*	Setters.	*/
+
+void	PhoneBook::set_num(int nbr)
+{
+	num = nbr;
+}
+
+/*	Removes the first contact in the directory and moves all of the other
+	contacts up one position.	*/
+
+void	PhoneBook::fifo(PhoneBook *phone)
 {
 	for (int i = 0; i < 7 ; i++)
 	{
@@ -191,87 +55,134 @@ void	fifo(PhoneBook *phone)
 	}
 }
 
-//Need a check to ensure that only one string is input.
-//Maybe also make sure phone number is numberic?
+/*	Creates a new contact with the input values for first name, last name,
+	nick name, phone number and darkest secret. It then adds this new
+	contact to the end of the phonebook. If the phonebook is full, it moves
+	all of the contacts up one position, deleting the first.	*/
 
-void	add_contact(PhoneBook *phone)
+void	PhoneBook::add_contact(PhoneBook *phone)
 {
-	Contact	book;
+	Contact		book;
+	std::string	str;
 
+	str = "";
 	std::cout << "Enter first name: " << std::endl;
-	std::cin >> book.first_name;
+	book.set_first_name(book.check_spaces());
 	std::cout << "Enter last name: " << std::endl;
-	std::cin >> book.last_name;
+	book.set_last_name(book.check_spaces());
 	std::cout << "Enter nick name: " << std::endl;
-	std::cin >> book.nick_name;
+	std::getline(std::cin, str);
+	while (book.check_empty(str))
+		std::getline(std::cin, str);
+	book.set_nick_name(str);
+	str = "";
 	std::cout << "Enter phone number: " << std::endl;
-	std::cin >> book.phone_number;
+	book.set_phone_number(book.check_phone());
 	std::cout << "Enter darkest secret: " << std::endl;
-	std::cin >> book.darkest_secret;
-	if (phone->num == 8)
+	std::getline(std::cin, str);
+	while (book.check_empty(str))
+		std::getline(std::cin, str);
+	book.set_darkest_secret(str);
+	str = "";
+	if (phone->get_num() == 8)
 	{
 		fifo(phone);
 		phone->phone_book[7] = book;
 	}
 	else
 	{
-		phone->phone_book[phone->num] = book;	phone->num++;
+		phone->phone_book[phone->get_num()] = book;
+		phone->set_num(phone->get_num() + 1);
 	}
 	system("clear");
 }
 
-void	string_limiter(string str)
+/*	Limits strings to 10 characters when printing in the search menu.
+	If the entry has more than 10 characters, it will only print the
+	first 9 followed by a '.' to indicate this is not the whole string.
+	If it has less than 10 characters, it will print spaces before the
+	entry to make the total string 10 characters long.	*/
+
+void	PhoneBook::string_limiter(std::string str)
 {
+	int	rem;
+
 	if (str.length() > 10)
 	{
-		printf("%.9s", str.c_str());
-		printf(".");
+		std::cout << str.substr(0, 9) << ".";
 	}
 	else
 	{
-		printf("%10s", str.c_str());
+		rem = 10 - str.length();
+		while (rem)
+		{
+			std::cout << ' ';
+			rem--;
+		}
+		std::cout << str;
 	}
 }
 
-void	print_contact(Contact contact, int index)
+/*	Prints the contact details for the search menu, with each entry
+	separated by a '|'.	*/
+
+void	PhoneBook::print_contact(Contact contact, int index)
 {
-	printf("%10i", index);
+	std::cout << "         " << index << "|";
+	string_limiter(contact.get_first_name());
 	std::cout << "|";
-	string_limiter(contact.first_name);
+	string_limiter(contact.get_last_name());
 	std::cout << "|";
-	string_limiter(contact.last_name);
-	std::cout << "|";
-	string_limiter(contact.nick_name);
-	printf("\n");
+	string_limiter(contact.get_nick_name());
+	std::cout << std::endl;
 }
 
-void	print_detailed(Contact contact)
+/*	Prints all of the details of a single contact, with a newline between
+	each entry.	If the entry does not contain any info, it will print a
+	message explaining that instead.	*/
+
+void	PhoneBook::print_detailed(Contact contact)
 {
+	if (contact.get_first_name().empty())
+	{
+		std::cout << "Contact is empty." << std::endl;
+		std::cout << "-----------------------" << std::endl;
+		return ;
+	}
 	std::cout << "First Name: ";
-	std::cout << contact.first_name << std::endl;
+	std::cout << contact.get_first_name() << std::endl;
 	std::cout << "Last Name: ";
-	std::cout << contact.last_name << std::endl;
+	std::cout << contact.get_last_name() << std::endl;
 	std::cout << "Nick Name: ";
-	std::cout << contact.nick_name << std::endl;
+	std::cout << contact.get_nick_name() << std::endl;
 	std::cout << "Phone Number: ";
-	std::cout << contact.phone_number << std::endl;
+	std::cout << contact.get_phone_number() << std::endl;
 	std::cout << "Darkest Secret: ";
-	std::cout << contact.darkest_secret << std::endl;
-	printf("-----------------------\n");
+	std::cout << contact.get_darkest_secret() << std::endl;
+	std::cout << "-----------------------" << std::endl;
 }
 
-void	find_contact(PhoneBook *book)
+/*	Prints basic details of all contacts, then allows the user to see a more
+	detailed version of a particular entry. If anything other than a correct
+	index (or '0' for exit) is entered, it will prompt the user to try again.	*/
+
+void	PhoneBook::find_contact(PhoneBook *book)
 {
-	int		i = 0;
-	string	str;
+	int			i = 0;
+	std::string	str;
 
 	std::cout << "     Index|First Name| Last Name| Nick Name" << std::endl;
 	while (++i < 9)
 		print_contact(book->phone_book[i - 1], i);
-	printf("-----------------------\n");
-	std::cout << "Enter the index of the contact you are searching for: " << std::endl;
-	std::cin >> str;
+	std::cout << "-------------------------------------------" << std::endl;
+	std::cout << "Enter the index of the contact you are searching for (0 to cancel): " << std::endl;
+	std::getline(std::cin, str);
 	i = atoi(str.c_str());
+	if (str == "0")
+	{
+		system("clear");
+		return ;
+	}
 	if (i < 1 || i > 8)
 	{
 		system("clear");
@@ -284,42 +195,3 @@ void	find_contact(PhoneBook *book)
 		print_detailed(book->phone_book[i - 1]);
 	}
 }
-
-int	main(void)
-{
-	string		input;
-	PhoneBook	book;
-
-	book.num = 0;
-	system("clear");
-	while (1)
-	{
-		input = "";
-		std::cout << "Pick an option: " << std::endl;
-		std::cout << "ADD to add new contact." << std::endl;
-		std::cout << "SEARCH to find a contact." << std::endl;
-		std::cout << "EXIT to exit." << std::endl;
-		std::cin >> input;
-		if (input == "ADD")
-		{
-			system("clear");
-			add_contact(&book);
-		}
-		else if (input == "SEARCH")
-		{
-			system("clear");
-			find_contact(&book);
-		}
-		else if (input == "EXIT")
-		{
-			exit (0);
-		}
-		else
-		{
-			system("clear");
-			std::cout << "Please choose a valid option." << std::endl;
-		}
-	}
-	return (0);
-}
->>>>>>> 3661cc3e31d17d1376c057aa2354b55f04fe7ca7

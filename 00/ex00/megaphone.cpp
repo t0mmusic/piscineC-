@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <iostream>
-using namespace std;
 
 void	ft_toupper(char *str)
 {
@@ -31,15 +30,15 @@ int	main(int ac, char **av)
 	int	i;
 	if (ac == 1)
 	{
-		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
 		return (0);
 	}
 	i = 0;
 	while (++i < ac)
 	{
 		ft_toupper(av[i]);
-		cout << av[i];
+		std::cout << av[i];
 	}
-	cout << "\n";
+	std::cout << "\n";
 	return (0);
 }
