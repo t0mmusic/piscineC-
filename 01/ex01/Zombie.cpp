@@ -6,7 +6,11 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 12:08:51 by jbrown            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/01 09:17:32 by jbrown           ###   ########.fr       */
+=======
+/*   Updated: 2022/05/30 15:20:10 by jbrown           ###   ########.fr       */
+>>>>>>> eaba5975fcffc36eda0042624e8a427e184342b5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +20,11 @@
 
 Zombie::Zombie(void)
 {
+<<<<<<< HEAD
 	return ;
+=======
+	return;
+>>>>>>> eaba5975fcffc36eda0042624e8a427e184342b5
 }
 
 /*	Destructor; prints name of the zombie being destroyed.	*/
@@ -24,6 +32,11 @@ Zombie::Zombie(void)
 Zombie::~Zombie(void)
 {
 	std::cout << this->name << " has been destroyed." << std::endl;
+<<<<<<< HEAD
+=======
+	delete this;
+	return;
+>>>>>>> eaba5975fcffc36eda0042624e8a427e184342b5
 }
 
 /*	Setters	*/
