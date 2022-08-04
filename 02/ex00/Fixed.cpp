@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:14:09 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/01 14:19:56 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/04 13:40:34 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ int		Fixed::getRawBits( void ) const{
 void	Fixed::setRawBits( int const raw ){
 	std::cout << "setRawBits member function called." << std::endl;
 	this->number = raw;
+}
+
+Fixed Fixed::operator = ( const Fixed copy ){
+	std::cout << "Copy assignment operator called." << std::endl;
+	this->setRawBits(copy.getRawBits());
+	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:26:52 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/01 15:49:40 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/04 13:42:55 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,9 @@ public:
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
 
-	Fixed operator = ( const Fixed copy ){
-		std::cout << "Copy assignment operator called." << std::endl;
-		this->setRawBits(copy.getRawBits());
-		return (*this);
-	}
-
-	friend std::ostream& operator<<(std::ostream& os, const Fixed& obj ){
-		os << obj.toFloat();
-		return (os);
-	}
+	Fixed operator = ( const Fixed copy );
 };
+
+std::ostream &operator << (std::ostream &os, const Fixed &obj );
 
 #endif

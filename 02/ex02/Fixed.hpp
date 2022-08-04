@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:26:52 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/01 16:34:44 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/04 12:15:26 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,102 +35,45 @@ public:
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
 
-	Fixed operator = ( const Fixed copy ){
-		std::cout << "Copy assignment operator called." << std::endl;
-		this->setRawBits(copy.getRawBits());
-		return (*this);
-	}
+	Fixed operator = ( const Fixed copy );
 
-	Fixed operator + ( Fixed *obj ){
-		return (this->number + obj->number);
-	}
+	Fixed operator + ( const Fixed &obj );
 
-	Fixed operator - ( Fixed *obj ){
-		return (this->number - obj->number);
-	}
+	Fixed operator - ( const Fixed &obj );
 
-	Fixed operator / ( Fixed *obj ){
-		return (this->number / obj->number);
-	}
+	Fixed operator / ( const Fixed &obj );
 
-	Fixed operator * ( Fixed *obj ){
-		return (this->number * obj->number);
-	}
+	Fixed operator * ( const Fixed &obj );
 
-	bool operator > ( Fixed *obj ){
-			return (this->number > obj->number);
-	}
+	bool operator > ( Fixed &obj );
 
-	bool operator < ( Fixed *obj ){
-			return (this->number < obj->number);
-	}
+	bool operator < ( Fixed &obj );
 
-	bool operator >= ( Fixed *obj ){
-			return (this->number >= obj->number);
-	}
+	bool operator >= ( Fixed &obj );
 
-	bool operator <= ( Fixed *obj ){
-			return (this->number <= obj->number);
-	}
+	bool operator <= ( Fixed &obj );
 
-	bool operator == ( Fixed *obj ){
-			return (this->number == obj->number);
-	}
+	bool operator == ( Fixed &obj );
 
-	bool operator != ( Fixed *obj ){
-			return (this->number != obj->number);
-	}
+	bool operator != ( Fixed &obj );
 
-	Fixed	operator ++ ( void ){
-		this->number++;
-		return (*this);
-	}
+	Fixed	operator ++ ( void );
 
-	Fixed	operator -- ( void ){
-		this->number--;
-		return (*this);
-	}
+	Fixed	operator -- ( void );
 
-	Fixed	operator ++ ( int ){
-		Fixed	untouched( *this );
-		this->number++;
-		return (untouched);
-	}
+	int	operator ++ ( int );
 
-	Fixed	operator -- ( int ){
-		Fixed	untouched( *this );
-		this->number--;
-		return (untouched);
-	}
+	int	operator -- ( int );
 
-	Fixed	&min( Fixed &obj1, Fixed &obj2 ){
-		if ( obj1.number < obj2.number)
-			return (obj1);
-		return (obj2);
-	}
+	Fixed	static &min( Fixed &obj1, Fixed &obj2 );
 
-	const Fixed	&min( const Fixed &obj1, const Fixed &obj2 ){
-		if ( obj1.number < obj2.number)
-			return (obj1);
-		return (obj2);
-	}
+	const Fixed	static &min( const Fixed &obj1, const Fixed &obj2 );
 
-	Fixed	&max( Fixed &obj1, Fixed &obj2 ){
-		if ( obj1.number > obj2.number)
-			return (obj1);
-		return (obj2);
-	}
+	Fixed	static &max( Fixed &obj1, Fixed &obj2 );
 
-	const Fixed	&max( const Fixed &obj1, const Fixed &obj2 ){
-		if ( obj1.number > obj2.number)
-			return (obj1);
-		return (obj2);
-	}
-
-	friend std::ostream &operator << (std::ostream &os, const Fixed &obj ){
-		os << obj.toFloat();
-		return (os);
-	}
+	const Fixed	static &max( const Fixed &obj1, const Fixed &obj2 );
 };
+
+std::ostream &operator << (std::ostream &os, const Fixed &obj );
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:14:09 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/01 16:09:46 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/04 12:15:29 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,101 @@ float	Fixed::toFloat( void ) const{
 
 int		Fixed::toInt( void ) const{
 	return (this->number >> Fixed::bits);
+}
+
+Fixed Fixed::operator = ( const Fixed copy ){
+	std::cout << "Copy assignment operator called." << std::endl;
+	this->setRawBits(copy.getRawBits());
+	return (*this);
+}
+
+Fixed Fixed::operator + ( const Fixed &obj ){
+	return (this->toFloat() + obj.toFloat());
+}
+
+Fixed Fixed::operator - ( const Fixed &obj ){
+	return (this->toFloat() - obj.toFloat());
+}
+
+Fixed Fixed::operator / ( const Fixed &obj ){
+	return (this->toFloat() / obj.toFloat());
+}
+
+Fixed Fixed::operator * ( const Fixed &obj ){
+	return (this->toFloat() * obj.toFloat());
+}
+
+bool Fixed::operator > ( Fixed &obj ){
+		return (this->getRawBits() > obj.getRawBits());
+}
+
+bool Fixed::operator < ( Fixed &obj ){
+		return (this->getRawBits() < obj.getRawBits());
+}
+
+bool Fixed::operator >= ( Fixed &obj ){
+		return (this->getRawBits() >= obj.getRawBits());
+}
+
+bool Fixed::operator <= ( Fixed &obj ){
+		return (this->getRawBits() <= obj.getRawBits());
+}
+
+bool Fixed::operator == ( Fixed &obj ){
+		return (this->getRawBits() == obj.getRawBits());
+}
+
+bool Fixed::operator != ( Fixed &obj ){
+		return (this->getRawBits() != obj.getRawBits());
+}
+
+Fixed	Fixed::operator ++ ( void ){
+	this->number++;
+	return (*this);
+}
+
+Fixed	Fixed::operator -- ( void ){
+	this->number--;
+	return (*this);
+}
+
+int	Fixed::operator ++ ( int ){
+	int	untouched = this->number;
+	this->number++;
+	return (untouched);
+}
+
+int	Fixed::operator -- ( int ){
+	int	untouched = this->number;
+	this->number--;
+	return (untouched);
+}
+
+Fixed	&Fixed::min( Fixed &obj1, Fixed &obj2 ){
+	if ( obj1 < obj2 )
+		return (obj1);
+	return (obj2);
+}
+
+const Fixed	&Fixed::min( const Fixed &obj1, const Fixed &obj2 ){
+	if ( obj1.getRawBits() < obj2.getRawBits() )
+		return (obj1);
+	return (obj2);
+}
+
+Fixed	&Fixed::max( Fixed &obj1, Fixed &obj2 ){
+	if ( obj1 > obj2 )
+		return (obj1);
+	return (obj2);
+}
+
+const Fixed	&Fixed::max( const Fixed &obj1, const Fixed &obj2 ){
+	if ( obj1.getRawBits() > obj2.getRawBits() )
+		return (obj1);
+	return (obj2);
+}
+
+std::ostream &operator << (std::ostream &os, const Fixed &obj ){
+	os << obj.toFloat();
+	return (os);
 }
