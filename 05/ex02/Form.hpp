@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 09:10:24 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:20:12 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/11 09:29:21 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,40 +20,50 @@
 class Bureaucrat;
 
 class Form {
+
 	public:
 		Form( std::string name, int sign_grade, int exe_grade );
 		Form( const Form &copy );
-		~Form( void );
+		virtual ~Form( void );
 
 		Form	&operator=( const Form &assign );
 
-		std::string			getName( void ) const;
-		int					getSignGrade( void ) const;
-		int 				getExeGrade( void ) const;
-		bool				getSigned( void ) const;
+		virtual std::string	getName( void ) const;
+		virtual int			getSignGrade( void ) const;
+		virtual int 		getExeGrade( void ) const;
+		virtual bool		getSigned( void ) const;
 
-		void				setSigned( bool sign );
+		virtual void		setSigned( bool sign );
 
-		void				beSigned( const Bureaucrat &bur );
+		virtual void		beSigned( const Bureaucrat &bur ) = 0;
+		virtual void		execute( Bureaucrat const &executor ) const = 0;
 
-	class GradeTooHighException: public std::exception{
+	class GradeTooHighException: public std::exception {
 		public:
 			virtual const char* what() const throw();
 	};
 
-	class GradeTooLowException: public std::exception{
+	class GradeTooLowException: public std::exception {
 		public:
 			virtual const char* what() const throw();
 	};
 
 	private:
 
+		/*	Required for Orthodox Canonical Form but not used in this Class. */
 		Form( void );
 
 		std::string const	_name;
 		int const			_sign_grade;
 		int const			_exe_grade;
 		bool				_signed;
+
+	protected:
+
+		std::string	_target;
+
+		void		setTarget( std::string target );
+		std::string	getTarget( void ) const;
 
 };
 

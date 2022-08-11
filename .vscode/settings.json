@@ -24,6 +24,12 @@
 		"stack": "cpp",
 		"string_view": "cpp",
 		"system_error": "cpp",
-		"new": "cpp"
+		"new": "cpp",
+		"__tuple": "cpp",
+		"exception": "cpp",
+		"functional": "cpp",
+		"tuple": "cpp",
+		"typeinfo": "cpp",
+		"vector": "cpp"
 	}
 }

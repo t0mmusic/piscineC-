@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 09:10:27 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:29:30 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/11 09:31:17 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,14 @@ const char *Form::GradeTooHighException::what() const throw() {
 
 const char *Form::GradeTooLowException::what() const throw() {
 	return ("Grade too low for Bureaucrat to manage Form.");
+}
+
+void		Form::setTarget( std::string target ){
+	this->_target = target;
+}
+
+std::string	Form::getTarget( void ) const{
+	return (this->_target);
 }
 
 std::ostream	&operator << ( std::ostream &stream, const Form &form ) {

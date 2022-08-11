@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:37:18 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:27:51 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/10 11:41:34 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,22 @@ void		Bureaucrat::signForm( Form &form ){
 		form.setSigned(true);
 		std::cout << this->_name << " has successfully signed form " << 
 		form.getName() << "." << std::endl;
+	}
+}
+
+void		Bureaucrat::executeForm( Form const &form ){
+	int	exe_form = form.getExeGrade();
+
+	if (this->_grade > exe_form)
+	{
+		std::cout << this->_name << " does not have a high enough grade to execute form " << form.getName()
+		<< ". Grade is " << this->_grade << ", but must be " << exe_form << " or higher."
+		<< std::endl;
+	}
+	else
+	{
+		// execute(*this);
+		std::cout << this->_name << " exectued " << form.getName() << "." << std::endl;
 	}
 }
 
