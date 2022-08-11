@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = *.cpp
+SRCS = Account.cpp tests.cpp
 
 all: $(NAME)
 
