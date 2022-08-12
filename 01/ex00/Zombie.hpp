@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 12:10:05 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/01 13:04:17 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 08:56:29 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@ class	Zombie
 
 	public:
 
-	/*	Constructor/Desctroctor	*/
+		/*	Constructor/Desctroctor	*/
 
-	Zombie(void);
-	~Zombie(void);
+		Zombie(void);
+		~Zombie(void);
 
-	/*	Setters	*/
+		/*	Setters	*/
 
-	void	set_name(std::string str);
+		void	set_name(std::string str);
 
-	/*	Getters	*/
+		/*	Getters	*/
 
-	std::string	get_name(void);
+		std::string	get_name(void);
 
-	/*	Class functions	*/
+		/*	Class functions	*/
 
-	void	announce(void);
+		void	announce(void);
 
 	private:
 
-	/*	Private class members	*/
+		/*	Private class members	*/
 
-	std::string	name;
+		std::string	name;
 
 };
 

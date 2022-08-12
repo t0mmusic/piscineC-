@@ -6,7 +6,7 @@
 #    By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/30 15:31:41 by jbrown            #+#    #+#              #
-#    Updated: 2022/06/02 15:04:48 by jbrown           ###   ########.fr        #
+#    Updated: 2022/08/12 09:38:11 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = *.cpp
+SRCS = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 
 all: $(NAME)
 
