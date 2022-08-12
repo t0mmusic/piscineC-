@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:26:52 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/04 13:42:55 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:20:32 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
 
-	Fixed operator = ( const Fixed copy );
+	Fixed &operator=( const Fixed &copy );
 };
 
 std::ostream &operator << (std::ostream &os, const Fixed &obj );

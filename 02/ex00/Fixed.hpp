@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:26:52 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/04 13:40:30 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:19:16 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	int		getRawBits( void ) const;
 	void	setRawBits( int const raw );
 
-	Fixed operator=( const Fixed copy );
+	Fixed &operator=( const Fixed &copy );
 };
 
 #endif

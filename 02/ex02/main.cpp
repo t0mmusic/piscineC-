@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:40:25 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/04 12:02:31 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:49:12 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int main( void ) {
 	Fixed a;
 	Fixed c( a );
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed const d(a + b);
+	std::cout << d << std::endl;
 	std::cout << "Testing Incrementing" << std::endl;
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;

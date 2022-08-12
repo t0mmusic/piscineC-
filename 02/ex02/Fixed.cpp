@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:14:09 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/04 12:15:29 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 14:46:57 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Fixed::Fixed( void ){
 
 Fixed::Fixed( const Fixed &copy ){
 	std::cout << "Copy constructor called." << std::endl;
-	this->setRawBits(copy.getRawBits());
+	this->number = copy.getRawBits();
 	return ;
 }
 
@@ -41,13 +41,11 @@ Fixed::~Fixed( void ){
 	return ;
 }
 
-int		Fixed::getRawBits( void ) const{
-	std::cout << "getRawBits member function called." << std::endl;
+int		Fixed::getRawBits( void ) const {
 	return (this->number);
 }
 
 void	Fixed::setRawBits( int const raw ){
-	std::cout << "setRawBits member function called." << std::endl;
 	this->number = raw;
 }
 
@@ -59,25 +57,25 @@ int		Fixed::toInt( void ) const{
 	return (this->number >> Fixed::bits);
 }
 
-Fixed Fixed::operator = ( const Fixed copy ){
+Fixed &Fixed::operator = ( const Fixed &copy ){
 	std::cout << "Copy assignment operator called." << std::endl;
-	this->setRawBits(copy.getRawBits());
+	this->number = copy.getRawBits();
 	return (*this);
 }
 
-Fixed Fixed::operator + ( const Fixed &obj ){
+float Fixed::operator + ( const Fixed &obj ){
 	return (this->toFloat() + obj.toFloat());
 }
 
-Fixed Fixed::operator - ( const Fixed &obj ){
+float	Fixed::operator - ( const Fixed &obj ){
 	return (this->toFloat() - obj.toFloat());
 }
 
-Fixed Fixed::operator / ( const Fixed &obj ){
+float	Fixed::operator / ( const Fixed &obj ){
 	return (this->toFloat() / obj.toFloat());
 }
 
-Fixed Fixed::operator * ( const Fixed &obj ){
+float	Fixed::operator * ( const Fixed &obj ){
 	return (this->toFloat() * obj.toFloat());
 }
 
@@ -105,14 +103,14 @@ bool Fixed::operator != ( Fixed &obj ){
 		return (this->getRawBits() != obj.getRawBits());
 }
 
-Fixed	Fixed::operator ++ ( void ){
+float	Fixed::operator ++ ( void ){
 	this->number++;
-	return (*this);
+	return (this->toFloat());
 }
 
-Fixed	Fixed::operator -- ( void ){
+float	Fixed::operator -- ( void ){
 	this->number--;
-	return (*this);
+	return (this->toFloat());
 }
 
 int	Fixed::operator ++ ( int ){

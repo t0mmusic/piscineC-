@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:26:52 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/12 14:37:02 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/12 16:52:52 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 
 	float	operator + ( const Fixed &obj );
 
-	float	operator - ( const Fixed &obj );
+	float	operator - ( const Fixed &obj ) const ;
 
 	float	operator / ( const Fixed &obj );
 
