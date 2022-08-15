@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:11:37 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/12 17:03:27 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 09:06:52 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 Point::Point( void ): _x(0), _y(0) {
 	std::cout << "*************************************" << std::endl;
-	std::cout << "Default constructor for Point called." << std::endl <<
-	"x: " << this->_x << std::endl <<
+	std::cout << "Default constructor for Point called, " <<
+	"x: " << this->_x << ", " <<
 	"y: " << this->_y << std::endl;
 	std::cout << "*************************************" << std::endl;
 }
 
 Point::Point( float x, float y ): _x(x), _y(y) {
 	std::cout << "*************************************" << std::endl;
-	std::cout << "Assignment constructor for Point called." << std::endl <<
-	"x: " << this->_x << std::endl <<
+	std::cout << "Assignment constructor for Point called, " <<
+	"x: " << this->_x << ", " <<
 	"y: " << this->_y << std::endl;
 	std::cout << "*************************************" << std::endl;
 }

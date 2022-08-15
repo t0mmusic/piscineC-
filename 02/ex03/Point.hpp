@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 11:04:01 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/12 16:51:26 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 09:05:16 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ class Point{
 
 };
 
-bool bsp( Point const a, Point const b, Point const c, Point const point );
+bool bsp( Point const &a, Point const &b, Point const &c, Point const &point );
 
 #endif

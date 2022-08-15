@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:14:09 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/12 14:46:57 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 09:52:33 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,43 +63,43 @@ Fixed &Fixed::operator = ( const Fixed &copy ){
 	return (*this);
 }
 
-float Fixed::operator + ( const Fixed &obj ){
+float 	Fixed::operator + ( const Fixed &obj ) const {
 	return (this->toFloat() + obj.toFloat());
 }
 
-float	Fixed::operator - ( const Fixed &obj ){
+float	Fixed::operator - ( const Fixed &obj ) const {
 	return (this->toFloat() - obj.toFloat());
 }
 
-float	Fixed::operator / ( const Fixed &obj ){
+float	Fixed::operator / ( const Fixed &obj ) const {
 	return (this->toFloat() / obj.toFloat());
 }
 
-float	Fixed::operator * ( const Fixed &obj ){
+float	Fixed::operator * ( const Fixed &obj ) const {
 	return (this->toFloat() * obj.toFloat());
 }
 
-bool Fixed::operator > ( Fixed &obj ){
+bool Fixed::operator > ( Fixed &obj ) const {
 		return (this->getRawBits() > obj.getRawBits());
 }
 
-bool Fixed::operator < ( Fixed &obj ){
+bool Fixed::operator < ( Fixed &obj ) const {
 		return (this->getRawBits() < obj.getRawBits());
 }
 
-bool Fixed::operator >= ( Fixed &obj ){
+bool Fixed::operator >= ( Fixed &obj ) const {
 		return (this->getRawBits() >= obj.getRawBits());
 }
 
-bool Fixed::operator <= ( Fixed &obj ){
+bool Fixed::operator <= ( Fixed &obj ) const {
 		return (this->getRawBits() <= obj.getRawBits());
 }
 
-bool Fixed::operator == ( Fixed &obj ){
+bool Fixed::operator == ( Fixed &obj ) const {
 		return (this->getRawBits() == obj.getRawBits());
 }
 
-bool Fixed::operator != ( Fixed &obj ){
+bool Fixed::operator != ( Fixed &obj ) const {
 		return (this->getRawBits() != obj.getRawBits());
 }
 
