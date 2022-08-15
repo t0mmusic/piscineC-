@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 13:48:25 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 15:29:41 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 16:40:59 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,36 @@
 
 #include <iostream>
 
-class ClapTrap{
-private:
+class ClapTrap {
+	
+	private:
 
-	std::string			_name;
-	int					_hit_points;
-	int					_energy_points;
-	const static int	_attack_damage = 0;
+		std::string	_name;
+		int			_hit_points;
+		int			_energy_points;
+		int			_attack_damage;
 
-public:
+	public:
 
-	ClapTrap( void );
-	ClapTrap( std::string name );
-	~ClapTrap( void );
+		ClapTrap( void );
+		ClapTrap( const std::string name );
+		ClapTrap( const ClapTrap &copy );
+		~ClapTrap( void );
 
+		ClapTrap	&operator=( const ClapTrap &copy );
 
-	std::string	getName( void );
-	int			getHitPoints( void );
-	int			getEnergyPoints( void );
-	int			getAttackDamage( void );
+		std::string	getName( void ) const ;
+		int			getHitPoints( void ) const ;
+		int			getEnergyPoints( void ) const ;
+		int			getAttackDamage( void ) const ;
 
-	void		setName( std::string name );
-	void		setHitPoints( int hit_points );
-	void		setEnergyPoints( int energy_points );
+		void		setName( std::string name );
+		void		setHitPoints( int hit_points );
+		void		setEnergyPoints( int energy_points );
 
-	void		attack(const std::string& target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
+		void		attack(const std::string& target);
+		void		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
 
 };
 

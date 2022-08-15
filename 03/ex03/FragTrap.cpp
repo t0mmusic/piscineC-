@@ -6,11 +6,26 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:59:30 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 09:06:54 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 16:59:05 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+
+FragTrap::FragTrap( void ) {
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "Default FragTrap Constructor!" << std::endl;
+	this->_name = "Default";
+	this->_hit_points = 10;
+	this->_energy_points = 10;
+	this->_attack_damage = 0;
+	std::cout << "Name : " << this->_name << std::endl;
+	std::cout << "Hit points : " << this->_hit_points << std::endl;
+	std::cout << "Energy points : " << this->_energy_points << std::endl;
+	std::cout << "Attack damage : " << this->_attack_damage << std::endl;
+	std::cout << "*************************************************" << std::endl;
+	return ;
+}
 
 FragTrap::FragTrap( std::string name ){
 	_name = name;
@@ -30,6 +45,22 @@ FragTrap::~FragTrap( void ){
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "FragTrap " << this->_name << " go bye-bye!" << std::endl;
 	std::cout << "*************************************************" << std::endl;
+}
+
+FragTrap	&FragTrap::operator=( const FragTrap &copy ) {	
+	
+	std::cout << "*************************************************" << std::endl;
+	std::cout << "FragTrap Copy Created!" << std::endl;
+	this->_name = copy.getName();
+	this->_hit_points = copy.getHitPoints();
+	this->_energy_points = copy.getEnergyPoints();
+	this->_attack_damage = copy.getAttackDamage();
+	std::cout << "Name : " << this->_name << std::endl;
+	std::cout << "Hit points : " << this->_hit_points << std::endl;
+	std::cout << "Energy points : " << this->_energy_points << std::endl;
+	std::cout << "Attack damage : " << this->_attack_damage << std::endl;
+	std::cout << "*************************************************" << std::endl;
+	return (*this);
 }
 
 void	FragTrap::highFivesGuys( void ){

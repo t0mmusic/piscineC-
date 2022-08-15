@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 16:46:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:38:21 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/15 17:18:04 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/15 17:37:37 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
-ScavTrap::ScavTrap( void ) {
-	this->_name = "Default Scav";
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+DiamondTrap::DiamondTrap( void ) {
+	ClapTrap::_name = "Default Diamond_clap_name";
+	this->_name = "Default Diamond";
+	this->_hit_points = FragTrap::_hit_points;
+	this->_energy_points = ScavTrap::_energy_points;
+	this->_attack_damage = FragTrap::_attack_damage;
+	std::cout << FragTrap::_hit_points << std::endl;
 	std::cout << "*************************************************" << std::endl;
-	std::cout << this->_name << " has been upgraded to ScavTrap Class!" << std::endl;
+	std::cout << this->_name << " has been upgraded to DiamondTrap Class!" << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;
 	std::cout << "Energy points : " << this->_energy_points << std::endl;
 	std::cout << "Attack damage : " << this->_attack_damage << std::endl;
@@ -26,13 +28,16 @@ ScavTrap::ScavTrap( void ) {
 	return ;
 }
 
-ScavTrap::ScavTrap( std::string name ) {
+DiamondTrap::DiamondTrap( std::string name ) {
+	ClapTrap::_name = name + "_clap_name";
 	this->_name = name;
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	this->_hit_points = FragTrap::_hit_points;
+	this->_energy_points = ScavTrap::_energy_points;
+	this->_attack_damage = FragTrap::_attack_damage;
+	std::cout << FragTrap::_hit_points << std::endl;
+	std::cout << ScavTrap::_energy_points << std::endl;
 	std::cout << "*************************************************" << std::endl;
-	std::cout << name << " has been upgraded to ScavTrap Class!" << std::endl;
+	std::cout << name << " has been upgraded to DiamondTrap Class!" << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;
 	std::cout << "Energy points : " << this->_energy_points << std::endl;
 	std::cout << "Attack damage : " << this->_attack_damage << std::endl;
@@ -40,9 +45,9 @@ ScavTrap::ScavTrap( std::string name ) {
 	return ;
 }
 
-ScavTrap::ScavTrap( const ScavTrap &copy ) {
+DiamondTrap::DiamondTrap( const DiamondTrap &copy ) {
 	std::cout << "*************************************************" << std::endl;
-	std::cout << "ScavTrap Copy Created!" << std::endl;
+	std::cout << "DiamondTrap Copy Created!" << std::endl;
 	this->_name = copy.getName();
 	this->_hit_points = copy.getHitPoints();
 	this->_energy_points = copy.getEnergyPoints();
@@ -54,16 +59,16 @@ ScavTrap::ScavTrap( const ScavTrap &copy ) {
 	std::cout << "*************************************************" << std::endl;
 }
 
-ScavTrap::~ScavTrap( void ) {
+DiamondTrap::~DiamondTrap( void ) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << this->_name << " has destructed!" << std::endl;
 	std::cout << "*************************************************" << std::endl;
 }
 
-ScavTrap	&ScavTrap::operator=( const ClapTrap &copy ) {	
+DiamondTrap	&DiamondTrap::operator=( const DiamondTrap &copy ) {	
 	
 	std::cout << "*************************************************" << std::endl;
-	std::cout << "ScavTrap Copy Created!" << std::endl;
+	std::cout << "DiamondTrap Copy Created!" << std::endl;
 	this->_name = copy.getName();
 	this->_hit_points = copy.getHitPoints();
 	this->_energy_points = copy.getEnergyPoints();
@@ -76,6 +81,6 @@ ScavTrap	&ScavTrap::operator=( const ClapTrap &copy ) {
 	return (*this);
 }
 
-void ScavTrap::guardGate( void ) {
-	std::cout << "It's Gate Guardin' time for " << this->_name << "!" << std::endl;
-}
+// void	attack( const std::string &target ) {
+// 	ScavTrap::attack(target);
+// }

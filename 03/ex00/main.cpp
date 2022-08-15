@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 13:48:21 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/04 16:06:43 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 16:11:12 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	main(void)
 {
+
 	ClapTrap	clappy("Clapmeister General");
-	ClapTrap	clappers("Clap-boi");
+	ClapTrap	clappers = clappy;
+
+	clappers.setName("Clap The Second");
 
 	clappy.attack(clappers.getName());
 	clappers.takeDamage(clappy.getAttackDamage());
@@ -38,4 +41,5 @@ int	main(void)
 	clappy.attack("Steve");
 
 	return (0);
+
 }

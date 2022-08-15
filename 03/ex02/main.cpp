@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 13:48:21 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 09:09:10 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/15 16:50:25 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,6 @@ int	main(void)
 	clappers.takeDamage(100);
 
 	clappers.attack(clappy.getName());
-
-	for (int repair = 1; repair < 10; repair++)
-	{
-		clappy.beRepaired(repair);
-	}
-	
-	clappy.attack("Steve");
 
 	return (0);
 }
