@@ -5,26 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 10:43:56 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 10:49:33 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/18 12:05:49 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/18 12:05:50 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BRAIN_HPP
-#define BRAIN_HPP
+# define BRAIN_HPP
 
 #include <iostream>
+#include <string>
 
-class Brain{
+class Brain {
 
-private:
+	public:
+		Brain( void );
+		Brain( const Brain &copy );
+		~Brain( void );
 
-	std::string	ideas[100];
+		Brain	&operator=( const Brain &assign );
 
-public:
-
-	Brain( void );
-	~Brain( void );
+	private:
+		std::string	_ideas[100];
 
 };
 

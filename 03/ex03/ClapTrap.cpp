@@ -6,19 +6,15 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 13:48:28 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:44:23 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/18 09:01:50 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) {
+ClapTrap::ClapTrap( void ): _name("Default"), _hit_points(10), _energy_points(10), _attack_damage(0) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "Default ClapTrap Constructor!" << std::endl;
-	this->_name = "Default";
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
 	std::cout << "Name : " << this->_name << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;
 	std::cout << "Energy points : " << this->_energy_points << std::endl;
@@ -27,11 +23,7 @@ ClapTrap::ClapTrap( void ) {
 	return ;
 }
 
-ClapTrap::ClapTrap( std::string name ) {
-	this->_name = name;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+ClapTrap::ClapTrap( std::string name ): _name(name), _hit_points(10), _energy_points(10), _attack_damage(0) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << this->_name << " has been summoned into existence!" << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;

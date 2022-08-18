@@ -6,11 +6,11 @@
 #    By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 14:02:03 by jbrown            #+#    #+#              #
-#    Updated: 2022/08/05 09:17:16 by jbrown           ###   ########.fr        #
+#    Updated: 2022/08/18 10:24:43 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = morbintime
+NAME = animorphs
 
 COMPILE = c++
 

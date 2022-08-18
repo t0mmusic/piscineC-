@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 17:21:35 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/18 09:47:50 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: virtual public ClapTrap{
+class ScavTrap: virtual public ClapTrap {
 
 private:
 
@@ -28,7 +28,7 @@ public:
 
 	ScavTrap	&operator=( const ScavTrap &copy );
 
-	void guardGate( void );
+	void	guardGate( void );
 
 };
 

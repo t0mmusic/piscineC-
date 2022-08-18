@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 10:43:56 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 10:49:33 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/18 10:02:26 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/18 11:34:27 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <iostream>
 
-class Brain{
+class WrongAnimal {
 
-private:
+protected:
 
-	std::string	ideas[100];
+	std::string	type;
 
 public:
 
-	Brain( void );
-	~Brain( void );
+	WrongAnimal( void );
+	WrongAnimal( const WrongAnimal &copy );
+	WrongAnimal( std::string type );
+	virtual ~WrongAnimal( void );
 
+	WrongAnimal &operator=( const WrongAnimal &copy );
+
+	void		makeSound( void ) const;
+	std::string	getType( void ) const;
 };
 
 #endif

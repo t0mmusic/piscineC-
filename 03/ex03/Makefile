@@ -6,7 +6,7 @@
 #    By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 14:02:03 by jbrown            #+#    #+#              #
-#    Updated: 2022/08/04 13:47:50 by jbrown           ###   ########.fr        #
+#    Updated: 2022/08/18 09:32:17 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = borderlands
 
 COMPILE = c++
 
-FLAGS = -Wall -Wextra -Werror -I .
+FLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -I .
 
 FLAGS_PLUS = -std=c++98
 

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 10:49:47 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 10:51:26 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/18 10:01:53 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/18 11:33:58 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
 
-Brain::Brain( void ){
-	std::cout << "Brain Created!" << std::endl;
-}
+#include "Animal.hpp"
 
-Brain::~Brain( void ){
-	std::cout << "Brain Destroyed!" << std::endl;
-}
+class Cat: public Animal{
+
+public:
+
+	Cat( void );
+	virtual ~Cat( void );
+	
+	Cat( const Cat &copy );
+	Cat &operator=( const Cat &copy );
+
+	void		makeSound( void ) const;
+};
+
+#endif

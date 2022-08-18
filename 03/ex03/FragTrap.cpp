@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:59:30 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:59:05 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/18 09:03:03 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ FragTrap::FragTrap( void ) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "Default FragTrap Constructor!" << std::endl;
 	this->_name = "Default";
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30;
 	std::cout << "Name : " << this->_name << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;
 	std::cout << "Energy points : " << this->_energy_points << std::endl;
