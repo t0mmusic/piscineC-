@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 12:05:49 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 09:00:05 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/18 10:02:26 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/18 11:34:27 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
 #include <iostream>
-#include <string>
 
-class Brain {
+class WrongAnimal {
 
-	public:
-		Brain( void );
-		Brain( const Brain &copy );
-		~Brain( void );
+protected:
 
-		Brain	&operator=( const Brain &assign );
+	std::string	type;
 
-		void	randomThought( int index ) const;
+public:
 
-	private:
-		std::string	_ideas[100];
+	WrongAnimal( void );
+	WrongAnimal( const WrongAnimal &copy );
+	WrongAnimal( std::string type );
+	virtual ~WrongAnimal( void );
 
+	WrongAnimal &operator=( const WrongAnimal &copy );
+
+	void		makeSound( void ) const;
+	std::string	getType( void ) const;
 };
 
 #endif

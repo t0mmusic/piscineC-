@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 12:05:49 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 09:00:05 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/05 09:45:08 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/19 10:04:14 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-#include <iostream>
-#include <string>
+int	main(void)
+{
+	
+	// Animal	broke;
+	Animal	*not_broke;
+	not_broke = new Cat();
+	Animal	*also_not_broke = new Dog();
 
-class Brain {
+	Cat	still_works;
+	Dog	also_still_works;
 
-	public:
-		Brain( void );
-		Brain( const Brain &copy );
-		~Brain( void );
+	delete not_broke;
+	delete also_not_broke;
 
-		Brain	&operator=( const Brain &assign );
+	return 0;
 
-		void	randomThought( int index ) const;
-
-	private:
-		std::string	_ideas[100];
-
-};
-
-#endif
+}

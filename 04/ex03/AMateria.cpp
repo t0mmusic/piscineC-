@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 12:05:49 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 09:00:05 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/19 14:59:56 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/19 15:14:38 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#include "AMateria.hpp"
 
-#include <iostream>
-#include <string>
+AMateria::AMateria( void ) {
 
-class Brain {
+}
 
-	public:
-		Brain( void );
-		Brain( const Brain &copy );
-		~Brain( void );
+AMateria::~AMateria( void ) {
 
-		Brain	&operator=( const Brain &assign );
+}
 
-		void	randomThought( int index ) const;
+std::string const & AMateria::getType() const {
+	return (type);
+}
 
-	private:
-		std::string	_ideas[100];
+AMateria* AMateria::clone() const {
+	return (NULL);
+}
 
-};
-
-#endif
+void AMateria::use(ICharacter& target) {
+	(void)target;
+}

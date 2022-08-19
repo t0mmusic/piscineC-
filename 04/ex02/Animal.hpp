@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 12:05:49 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 09:00:05 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/05 09:17:53 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/19 10:00:08 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <iostream>
-#include <string>
 
-class Brain {
+class Animal {
 
-	public:
-		Brain( void );
-		Brain( const Brain &copy );
-		~Brain( void );
+protected:
 
-		Brain	&operator=( const Brain &assign );
+	std::string	type;
 
-		void	randomThought( int index ) const;
+public:
 
-	private:
-		std::string	_ideas[100];
+	Animal( void );
+	Animal( const Animal &copy );
+	Animal( std::string &type );
+	virtual ~Animal( void );
+
+	Animal &operator=( const Animal &copy );
+
+	virtual void	makeSound( void ) const = 0;
+	std::string		getType( void ) const;
 
 };
 
