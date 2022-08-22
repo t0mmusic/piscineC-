@@ -6,18 +6,19 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 11:25:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 16:13:10 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 10:40:17 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
 Ice::Ice( void ) {
 	this->type = "ice";
+	std::cout << "\e[0;34m" << "Ice." << "\e[0m" << std::endl;
 }
 
 Ice::~Ice( void ) {
-	std::cout << "Ice Materia Disintegrated." << std::endl;
+	std::cout << "\e[0;31m" << "Ice Materia Disintegrated." << "\e[0m" << std::endl;
 }
 
 std::string const & Ice::getType( void ) const {
@@ -30,5 +31,6 @@ AMateria* Ice::clone( void ) const {
 }
 
 void Ice::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "\e[0;34m" << "* shoots an ice bolt at " << target.getName()
+	<< " *" << "\e[0m" << std::endl;
 }

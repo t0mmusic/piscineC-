@@ -6,18 +6,19 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:35:18 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/19 16:07:51 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 10:40:14 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
 Cure::Cure( void ) {
 	this->type = "cure";
+	std::cout << "\e[0;36m" << "Cure." << "\e[0m" << std::endl;
 }
 
 Cure::~Cure(void) {
-	std::cout << "Cure Materia Dissolved." << std::endl;
+	std::cout << "\e[0;31m" << "Cure Materia Dissolved." << "\e[0m" << std::endl;
 }
 
 std::string const & Cure::getType( void ) const {
@@ -30,5 +31,6 @@ AMateria* Cure::clone( void ) const {
 }
 
 void Cure::use(ICharacter& target) {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << "\e[0;36m" << "* heals " << target.getName() << "'s wounds *"
+	<< "\e[0m" << std::endl;
 }

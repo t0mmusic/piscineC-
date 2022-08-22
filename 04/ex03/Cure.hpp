@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 09:45:08 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 11:02:59 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/22 10:34:07 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/22 10:47:43 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
 
-int	main(void)
-{
-	
-	// Animal	broke;
-	Animal	*not_broke;
-	not_broke = new Cat();
-	Animal	*also_not_broke = new Dog();
+#include "Materia.hpp"
+#include "Character.hpp"
 
-	Cat	still_works;
-	Dog	also_still_works;
+class	Cure: public AMateria {
 
-	delete not_broke;
-	delete also_not_broke;
-	// Other tests??? IDK, abstract class can't be made
-	return 0;
+	private:
+		Cure( const Cure &copy );
+		Cure	&operator=( const Cure &copy );
+	public:
+		Cure( void );
+		virtual ~Cure( void );
 
-}
+		AMateria* clone() const;
+		std::string const & getType() const;
+		void use(ICharacter& target);
+};
+
+#endif
