@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 08:57:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 17:21:49 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:23:40 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 
 class FragTrap: virtual public ClapTrap {
 
-private:
-
+protected:
+	int	_hit_points;
+	int	_attack_damage;
 public:
 
 	FragTrap( void );

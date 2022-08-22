@@ -6,7 +6,7 @@
 #    By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 14:02:03 by jbrown            #+#    #+#              #
-#    Updated: 2022/08/04 13:47:50 by jbrown           ###   ########.fr        #
+#    Updated: 2022/08/22 11:26:24 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = *.cpp
+SRCS = ClapTrap.cpp FragTrap.cpp ScavTrap.cpp main.cpp
 
 all: $(NAME)
 

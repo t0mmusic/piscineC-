@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/18 09:47:50 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:23:35 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 class ScavTrap: virtual public ClapTrap {
 
-private:
-
+protected:
+	int	_energy_points;
 public:
 
 	ScavTrap( void );
