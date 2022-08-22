@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:36:42 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 12:46:41 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ public:
 
 	ScavTrap	&operator=( const ClapTrap &copy );
 
-	void guardGate( void );
+	void	attack(const std::string& target);
+	void	guardGate( void );
 
 };
 

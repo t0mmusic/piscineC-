@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 09:10:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 12:02:03 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/11 09:35:40 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/22 14:25:46 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 #include <iostream>
 #include <string>
 
-#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-class RobotomyRequestForm: public Form {
-	
+class ShrubberyCreationForm: public Form {
+
 	public:
+		
+		ShrubberyCreationForm( std::string target );
+		ShrubberyCreationForm( const ShrubberyCreationForm &copy );
+		virtual ~ShrubberyCreationForm( void );
 
-		RobotomyRequestForm( std::string target );
-		RobotomyRequestForm( const RobotomyRequestForm &copy );
-		~RobotomyRequestForm( void );
-
-		RobotomyRequestForm	&operator=( const RobotomyRequestForm &assign );
+		ShrubberyCreationForm	&operator=( const ShrubberyCreationForm &assign );
 
 		void	beSigned( const Bureaucrat &bur );
 		void	execute( Bureaucrat const &executor ) const;
 
 	private:
 
-		RobotomyRequestForm( void );
+		ShrubberyCreationForm( void );
 
 };
 

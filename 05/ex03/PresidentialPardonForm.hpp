@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 09:10:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 12:02:03 by jbrown           ###   ########.fr       */
+/*   Created: 2022/08/10 12:51:54 by jbrown            #+#    #+#             */
+/*   Updated: 2022/08/22 14:21:54 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 #include <string>
 
 #include "Form.hpp"
 
-class RobotomyRequestForm: public Form {
+class PresidentialPardonForm: public Form {
 	
 	public:
 
-		RobotomyRequestForm( std::string target );
-		RobotomyRequestForm( const RobotomyRequestForm &copy );
-		~RobotomyRequestForm( void );
+		PresidentialPardonForm( std::string target );
+		PresidentialPardonForm( const PresidentialPardonForm &copy );
+		virtual ~PresidentialPardonForm( void );
 
-		RobotomyRequestForm	&operator=( const RobotomyRequestForm &assign );
+		PresidentialPardonForm	&operator=( const PresidentialPardonForm &assign );
 
 		void	beSigned( const Bureaucrat &bur );
 		void	execute( Bureaucrat const &executor ) const;
 
 	private:
 
-		RobotomyRequestForm( void );
+		PresidentialPardonForm( void );
 
 };
 

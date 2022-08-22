@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 14:10:54 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 12:13:04 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 14:47:01 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,26 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
-	Bureaucrat				steve("Steve", 138);
-	RobotomyRequestForm		form("Gerald");
-	ShrubberyCreationForm	shrub("Forest");
-	PresidentialPardonForm	prez("Ford Prefect");
+	Intern	greg;
+	Form	*allForms[3];
+	Bureaucrat	steve("Steve", 138);
+	allForms[0] = greg.makeForm("Shrubbery Creation", "My Dad");
+	allForms[1] = greg.makeForm("Robotomy Request", "Gerald");
+	allForms[2] = greg.makeForm("Presidential Pardon", "Ford Prefect");
 
-	form.execute(steve);
-	shrub.execute(steve);
-	prez.execute(steve);
+	allForms[0]->execute(steve);
+	allForms[1]->execute(steve);
+	allForms[2]->execute(steve);
 	steve.SetGrade(5);
-	shrub.execute(steve);
-	form.execute(steve);
-	prez.execute(steve);
+	allForms[0]->execute(steve);
+	allForms[1]->execute(steve);
+	allForms[2]->execute(steve);
+	delete allForms[0];
+	delete allForms[1];
+	delete allForms[2];
 	return (0);
 }

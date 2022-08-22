@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:38:21 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/22 12:49:20 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,10 @@ ScavTrap	&ScavTrap::operator=( const ClapTrap &copy ) {
 
 void ScavTrap::guardGate( void ) {
 	std::cout << "It's Gate Guardin' time for " << this->_name << "!" << std::endl;
+}
+
+void	ScavTrap::attack(const std::string& target) {
+	std::cout << _name << " has launched an offensive on " <<
+	target << ", causing " << this->_attack_damage << " points of damage!" <<
+	std::endl; 
 }
