@@ -30,6 +30,19 @@
 		"functional": "cpp",
 		"tuple": "cpp",
 		"typeinfo": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"*.tcc": "cpp",
+		"cctype": "cpp",
+		"clocale": "cpp",
+		"cmath": "cpp",
+		"cstdint": "cpp",
+		"cstdio": "cpp",
+		"cstdlib": "cpp",
+		"cwchar": "cpp",
+		"cwctype": "cpp",
+		"initializer_list": "cpp",
+		"stdexcept": "cpp",
+		"string": "cpp",
+		"type_traits": "cpp"
 	}
 }
