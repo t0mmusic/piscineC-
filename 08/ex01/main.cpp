@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 13:17:24 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 13:42:31 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/28 14:45:10 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(void)
 {
     Span    smol(10);
-    std::cout << "\e[1;94m" << "******TESTING SMALLEST SPAN ON EMPTY VECTOR******" << "\e[0m" << std::endl;
+    std::cout << "\e[1;94m" << "******TESTING SHORTEST SPAN ON EMPTY VECTOR******" << "\e[0m" << std::endl;
     try
     {
         std::cout << smol.shortestSpan() << std::endl;
@@ -24,7 +24,7 @@ int main(void)
     {
         std::cerr << e.what() << '\n';
     }
-    smol.addNumber(15);
+    smol.addNumber(0);
     std::cout << "\e[1;94m" << "******TESTING LARGEST SPAN ON VECTOR WITH ONE NUMBER******" << "\e[0m" << std::endl;
     try
     {
@@ -38,7 +38,7 @@ int main(void)
     {
         smol.addNumber(i);
     }
-    std::cout << "\e[1;94m" << "******TESTING SMALLEST SPAN******" << "\e[0m" << std::endl;
+    std::cout << "\e[1;94m" << "******TESTING SHORTEST SPAN******" << "\e[0m" << std::endl;
     std::cout << smol.shortestSpan() << std::endl;
     std::cout << "\e[1;94m" << "******TESTING LONGEST SPAN******" << "\e[0m" << std::endl;
     std::cout << smol.longestSpan() << std::endl;
@@ -52,7 +52,7 @@ int main(void)
         std::cerr << e.what() << '\n';
     }
     Span    big(10000);
-    std::cout << "\e[1;94m" << "******TESTING LARGE SPAN WITH RANDOM VALUES (TAKES A MINUTE)******" << "\e[0m" << std::endl;
+    std::cout << "\e[1;94m" << "******TESTING LARGE SPAN WITH RANDOM VALUES******" << "\e[0m" << std::endl;
     for (int i = 0; i < 10000; i++)
     {
         int random = rand() % 10000000000;
