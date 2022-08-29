@@ -6,35 +6,43 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:37:18 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/05 15:01:30 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 09:31:25 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( int grade ): _name("Bob"), _grade(grade) {
-	std::cout << "Bureaucrat " << this->_name << " Born with " << this->_grade << " Grade." << std::endl;
+Bureaucrat::Bureaucrat( int grade ): _name("Bob") {
 	CheckGrade(grade);
+	_grade = grade;
+	std::cout << "\e[0;32m" << "Bureaucrat " << this->_name << " Born with " 
+	<< this->_grade << " Grade." << "\e[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat( std::string name, int grade ):  _name(name), _grade(grade) {
-	std::cout << "Bureaucrat " << this->_name << " Born with " << this->_grade << " Grade." << std::endl;
+Bureaucrat::Bureaucrat( std::string name, int grade ): _name(name) {
 	CheckGrade(grade);
+	_grade = grade;
+	std::cout << "\e[0;32m" << "Bureaucrat " << this->_name << " Born with " 
+	<< this->_grade << " Grade." << "\e[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
+Bureaucrat::Bureaucrat(const Bureaucrat &copy): _name(copy.GetName()) {
 	this->_grade = copy.GetGrade();
+	std::cout << "\e[0;32m" << "Bureaucrat " << this->_name << " copied with " 
+	<< this->_grade << " Grade." << "\e[0m" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat( void ) {
-	std::cout << "Bureaucrat " << this->_name << " has made an early retirement." << std::endl;
+	std::cout << "\e[0;35m" << "Bureaucrat " << this->_name 
+	<< " has made an early retirement." << "\e[0m" << std::endl;
 }
 
 void		Bureaucrat::SetGrade( int grade ) {
 	if (CheckGrade(grade))
 	{
 		this->_grade = grade;
-		std::cout << this->_grade << std::endl;
+		std::cout << _name << " is now a grade " 
+		<< this->_grade << "." << std::endl;
 	}
 	else
 	{
@@ -52,6 +60,9 @@ int			Bureaucrat::GetGrade( void ) const {
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &assign) {
 	this->_grade = assign.GetGrade();
+	std::cout << "\e[0;32m" << "Bureaucrat " << this->_name
+	<< " is now the same grade as " << assign.GetName() 
+	<< ", Grade "<< this->_grade << "." << "\e[0m" << std::endl;
 	return (*this);
 }
 

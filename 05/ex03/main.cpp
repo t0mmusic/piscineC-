@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 14:10:54 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 14:47:01 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:19:05 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	Intern	greg;
 	Form	*allForms[3];
 	Bureaucrat	steve("Steve", 138);
-	allForms[0] = greg.makeForm("Shrubbery Creation", "My Dad");
+	allForms[0] = greg.makeForm("Shrubbery Creation", "Arthur");
 	allForms[1] = greg.makeForm("Robotomy Request", "Gerald");
 	allForms[2] = greg.makeForm("Presidential Pardon", "Ford Prefect");
 

@@ -6,7 +6,7 @@
 #    By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 14:02:03 by jbrown            #+#    #+#              #
-#    Updated: 2022/08/05 11:21:31 by jbrown           ###   ########.fr        #
+#    Updated: 2022/08/25 15:15:35 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = *.cpp
+SRCS = Bureaucrat.cpp main.cpp Form.cpp
 
 all: $(NAME)
 

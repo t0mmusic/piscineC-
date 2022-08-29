@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 09:10:24 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:20:12 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 13:28:07 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ class Form {
 		Form( const Form &copy );
 		~Form( void );
 
-		Form	&operator=( const Form &assign );
-
 		std::string			getName( void ) const;
 		int					getSignGrade( void ) const;
 		int 				getExeGrade( void ) const;
 		bool				getSigned( void ) const;
 
+		bool				CheckGrade( int grade );
 		void				setSigned( bool sign );
 
 		void				beSigned( const Bureaucrat &bur );
@@ -54,7 +53,8 @@ class Form {
 		int const			_sign_grade;
 		int const			_exe_grade;
 		bool				_signed;
-
+		// = operator private as const. fields cannot be copied
+		Form	&operator=( const Form &assign );
 };
 
 std::ostream	&operator << ( std::ostream &stream, const Form &form );

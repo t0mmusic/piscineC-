@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 14:10:54 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:21:22 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:07:21 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ int	main(void)
 	Form		from("FTID42", 24, 1);
 
 	std::cout << steve << std::endl << from << std::endl;
+	try
+	{
+		Form	reject("No", -10, 200);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	try
 	{
 		steve.signForm(from);

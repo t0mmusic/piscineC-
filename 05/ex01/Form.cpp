@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 09:10:27 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/10 10:29:30 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 13:28:17 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "Bureaucrat.hpp"
 
 Form::Form( std::string name, int sign_grade, int exe_grade ): _name(name), _sign_grade(sign_grade), _exe_grade(exe_grade) {
+	this->CheckGrade(sign_grade);
+	this->CheckGrade(exe_grade);
 	this->_signed = false;
 	std::cout << "********************************************************************" << std::endl;
 	std::cout << "New form created." << std::endl
@@ -25,6 +27,8 @@ Form::Form( std::string name, int sign_grade, int exe_grade ): _name(name), _sig
 }
 
 Form::Form( const Form &copy ): _name(copy.getName()), _sign_grade(copy.getSignGrade()), _exe_grade(copy.getExeGrade()) {
+	this->CheckGrade(_sign_grade);
+	this->CheckGrade(_exe_grade);
 	this->_signed = copy.getSigned();
 	std::cout << "********************************************************************" << std::endl;
 	std::cout << "Form copy made." << std::endl
@@ -73,8 +77,9 @@ void				Form::beSigned( const Bureaucrat &bur ){
 
 	if (bur_grade > this->_sign_grade)
 	{
-		std::cout << bur.GetName() << " does not have a high enough grade to sign form " << this->_name
-		<< ". Grade is " << bur_grade << ", but must be " << this->_sign_grade << " or higher."
+		std::cout << bur.GetName() << " does not have a high enough grade to sign form " 
+		<< this->_name << ". Grade is " << bur_grade 
+		<< ", but must be " << this->_sign_grade << " or higher."
 		<< std::endl;
 		throw Form::GradeTooLowException();
 	}
@@ -90,12 +95,26 @@ void				Form::beSigned( const Bureaucrat &bur ){
 	}
 }
 
+bool	Form::CheckGrade( int grade ) {
+	if (grade < 1)
+	{
+		throw Form::GradeTooHighException();
+		return (false);
+	}
+	else if (grade > 150)
+	{
+		throw Form::GradeTooLowException();
+		return (false);
+	}
+	return (true);
+}
+
 const char *Form::GradeTooHighException::what() const throw() {
-	return ("Grade is too high! Form might explode!");
+	return ("Grade not Acceptable For Form. Lower Grade Required.");
 }
 
 const char *Form::GradeTooLowException::what() const throw() {
-	return ("Grade too low for Bureaucrat to manage Form.");
+	return ("Grade not Acceptable For Form. Higher Grade Required.");
 }
 
 std::ostream	&operator << ( std::ostream &stream, const Form &form ) {

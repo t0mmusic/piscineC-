@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 12:51:54 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/11 09:09:50 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:58:02 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PresidentialPardonForm: public Form {
 
 		PresidentialPardonForm( std::string target );
 		PresidentialPardonForm( const PresidentialPardonForm &copy );
-		~PresidentialPardonForm( void );
+		virtual ~PresidentialPardonForm( void );
 
 		PresidentialPardonForm	&operator=( const PresidentialPardonForm &assign );
 

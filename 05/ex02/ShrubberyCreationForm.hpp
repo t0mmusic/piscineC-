@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:35:40 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/11 09:36:58 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:58:14 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ShrubberyCreationForm: Form {
 		
 		ShrubberyCreationForm( std::string target );
 		ShrubberyCreationForm( const ShrubberyCreationForm &copy );
-		~ShrubberyCreationForm( void );
+		virtual ~ShrubberyCreationForm( void );
 
 		ShrubberyCreationForm	&operator=( const ShrubberyCreationForm &assign );
 

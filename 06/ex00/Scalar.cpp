@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Scalar.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 20:19:08 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 21:56:47 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/29 08:54:33 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char const *Scalar::Unprintable::what(void) const throw() {
 
 char	Scalar::charConvert( void ) {
 	float	f = doubleConvert();
-	if (isnan(f) || isinf(f) || isinff(f))
+	if (isnan(f) || isinf(f))
 		throw Unprintable();
 	if (f < 33 || f > 126)
 		throw Unconvertable();
@@ -52,7 +52,7 @@ char	Scalar::charConvert( void ) {
 
 int	Scalar::intConvert( void ) {
 	float f = doubleConvert();
-	if (isnan(f) || isinf(f) || isinff(f))
+	if (isnan(f) || isinf(f))
 		throw Unprintable();
 	if (f < -2147483648 || f > 2147483647)
 		throw Unconvertable();
@@ -89,7 +89,8 @@ bool		Scalar::validCheck( void ) {
 		return (true);
 	for (int i = 0; _input[i]; i++)
 	{
-		if (!isdigit(_input[i]) && _input[i] != '-' && _input[i] != '.')
+		if (!isdigit(_input[i]) && _input[i] != '-'
+			&& _input[i] != '.' && _input[i] != '+')
 			return (false);
 	}
 	return (true);

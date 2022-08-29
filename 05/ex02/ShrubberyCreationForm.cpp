@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:34:34 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 11:53:41 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 15:08:29 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 using namespace std;
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): Form::Form("PPF", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): Form::Form("SCF", 145, 137) {
 	this->_target = target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &copy ): Form::Form("PPF", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &copy ): Form::Form("SCF", 145, 137) {
 	this->_target = copy.getTarget();
 }
 

@@ -6,7 +6,7 @@
 /*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 09:10:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 12:02:03 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/25 14:58:09 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class RobotomyRequestForm: public Form {
 
 		RobotomyRequestForm( std::string target );
 		RobotomyRequestForm( const RobotomyRequestForm &copy );
-		~RobotomyRequestForm( void );
+		virtual ~RobotomyRequestForm( void );
 
 		RobotomyRequestForm	&operator=( const RobotomyRequestForm &assign );
 
