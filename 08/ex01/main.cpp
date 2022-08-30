@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 13:17:24 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 14:45:10 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/30 13:57:24 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,17 @@ int main(void)
         std::cerr << e.what() << '\n';
     }
     Span    big(10000);
-    std::cout << "\e[1;94m" << "******TESTING LARGE SPAN WITH RANDOM VALUES******" << "\e[0m" << std::endl;
-    for (int i = 0; i < 10000; i++)
+    std::cout << "\e[1;94m" << "******TESTING MULTI ADD WITH TOO MANY VALUES******" << "\e[0m" << std::endl;
+    try
     {
-        int random = rand() % 10000000000;
-        // std::cout << random << std::endl;
-        big.addNumber(random);
+        big.addNumbers(10001);
     }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    std::cout << "\e[1;94m" << "******TESTING LARGE SPAN WITH RANDOM VALUES******" << "\e[0m" << std::endl;
+    big.addNumbers(10000);
     std::cout << "\e[1;94m" << "******TESTING SHORTEST SPAN******" << "\e[0m" << std::endl;
     std::cout << big.shortestSpan() << std::endl;
     std::cout << "\e[1;94m" << "******TESTING LONGEST SPAN******" << "\e[0m" << std::endl;

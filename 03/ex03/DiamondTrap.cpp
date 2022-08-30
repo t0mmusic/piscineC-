@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 17:18:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/18 09:51:27 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:44:42 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ DiamondTrap::DiamondTrap( std::string name ) {
 	this->_hit_points = FragTrap::_hit_points;
 	this->_attack_damage = FragTrap::_attack_damage;
 	this->_energy_points = ScavTrap::_energy_points;
-	std::cout << "Frag hitpoints: " << ScavTrap::_hit_points << std::endl;
-	std::cout << "Frag attack: " << FragTrap::_attack_damage << std::endl;
 	std::cout << "*************************************************" << std::endl;
 	std::cout << name << " has been upgraded to DiamondTrap Class!" << std::endl;
 	std::cout << "Hit points : " << this->_hit_points << std::endl;
@@ -44,7 +42,7 @@ DiamondTrap::DiamondTrap( std::string name ) {
 	return ;
 }
 
-DiamondTrap::DiamondTrap( const DiamondTrap &copy ) {
+DiamondTrap::DiamondTrap( const DiamondTrap &copy ): ClapTrap(copy._name), FragTrap(copy._name), ScavTrap(copy._name) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "DiamondTrap Copy Created!" << std::endl;
 	this->_name = copy.getName();

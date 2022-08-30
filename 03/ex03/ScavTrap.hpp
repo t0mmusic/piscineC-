@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:15 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/22 11:23:35 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:43:20 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 
 	ScavTrap	&operator=( const ScavTrap &copy );
 
+	void	attack(const std::string& target);
 	void	guardGate( void );
 
 };

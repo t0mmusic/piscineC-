@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 12:50:54 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 14:55:07 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:18:44 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,9 @@ Span	&Span::operator=(const Span &assign) {
 	return (*this);
 }
 
-// inserts numbers in order into the vector
-// this implementation is sadly slightly less efficient
-// than just sorting the vector afterwards
-void	findPosition( int num, std::vector<int> &vec ) {
-	std::vector<int>::iterator	current, next;
-	current = vec.begin();
-	if (vec.empty() || num <= *current)
-	{
-		vec.insert(vec.begin(), num);
-		return ;
-	}
-	next = vec.begin() + 1;
-	while (next != vec.end())
-	{
-		if (num >= *current && num <= *next)
-		{
-			break ;
-		}
-		current++;
-		next++;
-	}
-	vec.insert(next, num);
-}
-
 void	Span::addNumber( int num ) {
 	if (_total == _current)
 		throw spanFull();
-	// findPosition(num, _span);
 	_span.push_back(num);
 	if (!_current)
 	{
@@ -81,6 +56,20 @@ void	Span::addNumber( int num ) {
 		_max = num;
 	if (num < _min)
 		_min = num;
+}
+
+//adds random values to Span in input quantity
+void	Span::addNumbers( int quant ) {
+	if (quant + _current > _total)
+	{
+		throw spanFull();
+	}
+	srand((unsigned)time(0));
+	for (int i = 0; i < quant; i++)
+    {
+        int random = rand() % 10000000000;
+        this->addNumber(random);
+    }
 }
 
 int		Span::shortestSpan( void ) {

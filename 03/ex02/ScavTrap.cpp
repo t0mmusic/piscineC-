@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:46:04 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/15 16:54:47 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/30 14:38:00 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ScavTrap::ScavTrap( void ) {
 	return ;
 }
 
-ScavTrap::ScavTrap( std::string name ) {
+ScavTrap::ScavTrap( std::string name ): ClapTrap(name) {
 	this->_name = name;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
@@ -40,7 +40,7 @@ ScavTrap::ScavTrap( std::string name ) {
 	return ;
 }
 
-ScavTrap::ScavTrap( const ScavTrap &copy ) {
+ScavTrap::ScavTrap( const ScavTrap &copy ): ClapTrap(copy._name) {
 	std::cout << "*************************************************" << std::endl;
 	std::cout << "ScavTrap Copy Created!" << std::endl;
 	this->_name = copy.getName();
@@ -78,4 +78,10 @@ ScavTrap	&ScavTrap::operator=( const ScavTrap &copy ) {
 
 void ScavTrap::guardGate( void ) {
 	std::cout << "It's Gate Guardin' time for " << this->_name << "!" << std::endl;
+}
+
+void	ScavTrap::attack(const std::string& target) {
+	std::cout << _name << " has launched an offensive on " <<
+	target << ", causing " << this->_attack_damage << " points of damage!" <<
+	std::endl; 
 }
