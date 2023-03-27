@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbrown <jbrown@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 12:45:25 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/29 14:49:35 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/31 16:04:17 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef MUTANTSTACK_TPP
+#define MUTANTSTACK_TPP
 
 #include "MutantStack.hpp"
 
@@ -52,3 +55,5 @@ template <typename T>
 typename MutantStack<T>::iterator    MutantStack<T>::rend(void) {
 	return (this->c.rend());
 }
+
+#endif

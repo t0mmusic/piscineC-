@@ -6,12 +6,14 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 15:59:12 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 11:58:35 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/31 15:58:35 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef EASYFIND_TPP
+#define EASYFIND_TPP
+
 #include "easyfind.hpp"
-#include <algorithm>
 
 const char *notFound::what( void ) const throw() {
     return("Invalid Index For Array.");
@@ -28,3 +30,5 @@ void	easyfind(T ctnr, int i) {
     }
     std::cout << *it << std::endl;
 }
+
+#endif

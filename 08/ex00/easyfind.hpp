@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:13:16 by jbrown            #+#    #+#             */
-/*   Updated: 2022/08/28 11:53:32 by jbrown           ###   ########.fr       */
+/*   Updated: 2022/08/31 16:00:11 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <algorithm>
 
 class	notFound: public std::exception {
 	public :
