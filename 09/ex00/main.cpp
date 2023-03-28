@@ -6,10 +6,10 @@ int main(int ac, char **av)
 	{
 		std::cout << "Please input a file!" << std::endl;
 	}
-	BitcoinExchange	ex;
+	BitcoinExchange	ex(av[1]);
 
-	ex.importCsv();
-	ex.importCompare(av[1]);
+	// ex.importCsv();
+	// ex.importCompare(av[1]);
 	// ex.validate_date("2020-05-05");
 	// ex.validate_date("dhfb");
 	// ex.validate_date("1900-10101");

@@ -6,11 +6,11 @@
 #    By: jbrown <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 12:10:27 by jbrown            #+#    #+#              #
-#    Updated: 2023/03/28 12:03:53 by jbrown           ###   ########.fr        #
+#    Updated: 2023/03/28 13:53:46 by jbrown           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = exchange
+NAME = RPN
 
 COMPILE = c++
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -I .
 
 FLAGS_PLUS = -std=c++98
 
-SRCS = main.cpp BitcoinExchange.cpp
+SRCS = main.cpp RPN.cpp
 
 all: $(NAME)
 

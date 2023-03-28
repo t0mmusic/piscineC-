@@ -1,24 +1,32 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() { }
+
+BitcoinExchange::BitcoinExchange( char *file_in ) {
+	importCsv();
+	importCompare(file_in);
+}
+
 BitcoinExchange::~BitcoinExchange() { }
 
 void	BitcoinExchange::importCsv() {
-	std::ifstream file(CSV_FILE);
-	std::string	line;
+	std::ifstream	file(CSV_FILE);
+	std::string		line;
 
-	std::string	date;
-	std::string	val;
-	float	fval;
+	std::string		date;
+	std::string		val;
+	int				idate;
+	float			fval;
 	while (std::getline(file, line))
 	{
 		date = line.substr(0, line.find(','));
 		val = line.substr(line.find(',') + 1, line.length());
 		try
 		{
-			fval = (float)std::stof(val);
-			csv[date] = fval;
-			dates.push_back(dateToInt(date));
+			std::stringstream ss(val);
+			ss >> fval;
+			idate = dateToInt(date);
+			csv[idate] = fval;
 		}
 		catch (...)
 		{
@@ -33,8 +41,8 @@ void	BitcoinExchange::importCompare( char *file_in ) {
 
 	std::string	date;
 	std::string	val;
-	float	fval;
-	int i = 0;
+	float		fval;
+	int 		i = 0;
 	while (std::getline(file, line))
 	{
 		if (i == 0)
@@ -49,10 +57,14 @@ void	BitcoinExchange::importCompare( char *file_in ) {
 		{
 			continue ;
 		}
-		std::cout << date << " => " << val << " = " << std::stof(val) * bitcoin << std::endl;
+		std::stringstream sv(val);
+		float	tmp;
+		sv >> tmp;
+		std::cout << date << " => " << val << " = " << tmp * bitcoin << std::endl;
 		try
 		{
-			fval = (float)std::stof(val);
+			std::stringstream ss(val);
+			ss >> fval;
 		}
 		catch (...)
 		{
@@ -63,6 +75,7 @@ void	BitcoinExchange::importCompare( char *file_in ) {
 
 bool 	BitcoinExchange::validate_date( std::string date ) {
 	std::string	validate;
+	std::string saveDate = date;
 
 	// Year
 	int	year;
@@ -76,7 +89,8 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 			throw std::invalid_argument("");
 		}
 		// throws exception if string can't be converted to int
-		year = std::stoi(validate);
+		std::stringstream ss(validate);
+		ss >> year;
 		// throws exception if year is less than 1900
 		if (year < 1900)
 		{
@@ -87,7 +101,7 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 	}
 	catch (...)
 	{
-		std::cout << "Error: Invalid year format => " << date << std::endl;
+		std::cout << "Error: Invalid year format => " << saveDate << std::endl;
 		return (false);
 	}
 
@@ -103,7 +117,8 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 			throw std::invalid_argument("");
 		}
 		// throws exception if string can't be converted to int
-		month = std::stoi(validate);
+		std::stringstream ss(validate);
+		ss >> month;
 		// throws exception if date range is invalid
 		if (month < 1 || month > 12)
 		{
@@ -114,7 +129,7 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 	}
 	catch (...)
 	{
-		std::cout << "Error: Invalid month format => " << date << std::endl;
+		std::cout << "Error: Invalid month format => " << saveDate << std::endl;
 		return (false);
 	}
 
@@ -127,7 +142,8 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 			throw std::invalid_argument("");
 		}
 		// throws exception if string can't be converted to int
-		day = std::stoi(date);
+		std::stringstream ss(date);
+		ss >> day;
 		const int month_len[12] = {31,29,31,30,31,30,31,31,30,31,30,31};
 		// throws exception if day is not valid for month
 		if (day < 1 || day > month_len[month - 1])
@@ -137,30 +153,31 @@ bool 	BitcoinExchange::validate_date( std::string date ) {
 	}
 	catch (...)
 	{
-		std::cout << "Error: Invalid day format => " << date << std::endl;
+		std::cout << "Error: Invalid day format => " << saveDate << std::endl;
 		return (false);
 	}
-	// std::cout << year << "-" << month << "-" << day << std::endl;
 	return (true);
 }
 
 bool	BitcoinExchange::validate_input( std::string value ) {
 	float val;
-	try
+	
+	for (size_t i = 0; i < value.length(); i++)
 	{
-		val = std::stof(value);
+		if (!isdigit(value[i]) && value[i] != '-' && value[i] != '.')
+		{
+			std::cout << "Error: not a number." << std::endl;
+			return (false);
+		}
 	}
-	catch (...)
-	{
-		std::cout << "Error: not a number." << std::endl;
-		return (false);
-	}
+	std::stringstream ss(value);
+	ss >> val;
 	if (val < 0.0)
 	{
 		std::cout << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-	if (val > 999.0)
+	if (val > 999.9)
 	{
 		std::cout << "Error: too large a number." << std::endl;
 		return (false);
@@ -168,52 +185,45 @@ bool	BitcoinExchange::validate_input( std::string value ) {
 	return (true);
 }
 
-int	BitcoinExchange::dateToInt( std::string date ) {
+int		BitcoinExchange::dateToInt( std::string date ) {
 	int	year, month, day;
+	std::string			tmp;
 
-	year = stoi(date.substr(0, date.find('-')));
+	tmp = date.substr(0, date.find('-'));
+	std::stringstream sy(tmp);
+	sy >> year;
 	date.erase(0, date.find('-') + 1);
-	month = stoi(date.substr(0, date.find('-')));
+	tmp = date.substr(0, date.find('-'));
+	std::stringstream sm(tmp);
+	sm >> month;
 	date.erase(0, date.find('-') + 1);
-	day = stoi(date);
+	std::stringstream sd(date);
+	sd >> day;
 
 	return ((year * 10000) + (month * 100) + day);
 }
 
 float	BitcoinExchange::findClosestDate( std::string date ) {
 	int	compare = dateToInt(date);
-	int	current = *dates.begin();
-	int	i = 0;
+	int	current = csv.begin()->first;
 	
 	if (compare < current)
 	{
 		std::cout << "Error: bad input => " << date << std::endl;
 		return (-1);
 	}
-	for(std::vector<int>::iterator it = dates.begin(); it != dates.end(); ++it)
+	for(std::map<int, float>::iterator it = csv.begin(); it != csv.end(); ++it)
 	{
-		int	next = *it;
+		int	next = it->first;
 		if (next == current)
 		{
 			continue ;
 		}
     	if (compare >= current && compare < next)
 		{
-			break ;
+			return (it->second);
 		}
 		current = next;
-		i++;
 	}
-	int j = 0;
-	float	ret = 0.0;
-	for (std::map<std::string, float>::iterator it = csv.begin(); it != csv.end(); ++it)
-	{
-		if (j == i)
-		{
-			ret = it->second;
-			break ;
-		}
-		j++;
-	}
-	return (ret);
+	return (csv.end()->second);
 }
