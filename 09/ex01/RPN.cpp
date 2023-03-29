@@ -80,7 +80,7 @@ bool	RPN::isOp( std::string s ) {
 bool	RPN::isVal( std::string s ) {
 	for (size_t i = 0; s[i]; i++)
 	{
-		if (!isdigit(s[i]) && s[i] != '.')
+		if (!isdigit(s[i]) && s[i] != '.' && s[i] != '-')
 		{
 			return (false);
 		}
@@ -103,12 +103,7 @@ void	RPN::process(  ) {
 
 	while (!inputs.empty())
 	{
-		if (isVal(inputs.top()))
-		{
-			// adds value to stack
-			numStack.push(stof(inputs.top()));
-		}
-		else if (isOp(inputs.top()))
+		if (isOp(inputs.top()))
 		{
 			if (!stackMaths(inputs.top()[0]))
 			{
@@ -116,6 +111,11 @@ void	RPN::process(  ) {
 				success = false;
 				break ;
 			}
+		} // putting this after isOp check allows negative values 
+		else if (isVal(inputs.top()))
+		{
+			// adds value to stack
+			numStack.push(stof(inputs.top()));
 		}
 		else
 		{
@@ -138,7 +138,7 @@ void	RPN::split( char *s ) {
 	while (s[i])
 	{
 		i++;
-	}
+	} // reverse iterate through array to load stack in correct order
 	for (int j = i; j >= 0; j--)
 	{
 		if (s[j] == ' ' && s[j + 1] != ' ' && s[j + 1])
@@ -154,10 +154,4 @@ void	RPN::split( char *s ) {
 	{
 		inputs.push(&s[0]);
 	}
-	// while (!inputs.empty())
-	// {
-	// 	std::cout << inputs.top() << std::endl;
-	// 	inputs.pop();
-	// }
-	// exit(0);
 }
