@@ -1,13 +1,46 @@
 # include "RPN.hpp"
 
-RPN::RPN() { }
+RPN::RPN() {
+	testCases(1, "");
+	testCases(2, "8 9 * 9 - 9 - 9 - 4 - 1 +");
+	testCases(3, "7 7 * 7 -");
+	testCases(4, "1 2 * 2 / 2 * 2 4 - +");
+	testCases(5, "(1 + 1)");
+	testCases(6, " 	1			    1  	 	+    ");
+	testCases(7, "1 1 + + +");
+	testCases(8, "1 + 1");
+	testCases(9, "2 5 * 4 + 3 2 * 1 + / ");
+	testCases(9, "1 2 3 * + 4 5 6 7 + + - +");
+	testCases(9, "-9 1.5 *");
+	testCases(9, "1");
+	testCases(9, "a");
+}
 
 RPN::RPN( char *s ) {
-	split(s);
-	process();
+	if (split(s))
+	{
+		process();
+	}
 }
 
 RPN::~RPN() { }
+
+// test cases for evaluation
+void	RPN::testCases( int val, std::string s) {
+	std::cout << "Test case " << val << ": " << s << std::endl;
+	if (split(s))
+	{
+		process();
+	}
+	while (!numStack.empty())
+	{
+		numStack.pop();
+	}
+	while (!inputs.empty())
+	{
+		inputs.pop();
+	}
+}
 
 // pulls top two values from stack to be operated on
 bool	RPN::stackMaths( char op ) {
@@ -20,7 +53,6 @@ bool	RPN::stackMaths( char op ) {
 	}
 	else
 	{
-		std::cerr << "Error: Stack Empty." << '\n';
 		return (false);
 	}
 	if (!numStack.empty())
@@ -30,17 +62,14 @@ bool	RPN::stackMaths( char op ) {
 	}
 	else
 	{
-		std::cerr << "Error: Stack Empty." << '\n';
 		return (false);
 	}
 	numStack.push(opVals(val2, val1, op));
-	// std::cout << numStack.top() << std::endl;
 	return (true);
 }
 
 // performs mathematical operations on floats from the stack
 float	RPN::opVals( float val1, float val2, char op ) {
-	// std::cout << val1 << " " << op << " " << val2 << " = ";
 	switch(op) {
 		case '+':
 			return (val1 + val2);
@@ -99,19 +128,16 @@ float	RPN::stof( std::string s ) {
 
 // check is digit or is operator
 void	RPN::process(  ) {
-	bool	success = true;
-
 	while (!inputs.empty())
 	{
 		if (isOp(inputs.top()))
 		{
 			if (!stackMaths(inputs.top()[0]))
 			{
-				std::cerr << "Error: extra operator." << std::endl;
-				success = false;
-				break ;
+				std::cout << "Error: Invalid operator placement." << std::endl;
+				return ;
 			}
-		} // putting this after isOp check allows negative values 
+		} // putting this after isOp check allows negative values
 		else if (isVal(inputs.top()))
 		{
 			// adds value to stack
@@ -119,33 +145,44 @@ void	RPN::process(  ) {
 		}
 		else
 		{
-			std::cerr << "Error: unrecognised value." << std::endl;
-			success = false;
-			break ;
+			std::cout << "Error: unrecognised value => " << inputs.top() << std::endl;
+			return ;
 		}
 		inputs.pop();
 	}
-	if (success)
+	float	result = numStack.top();
+	numStack.pop();
+
+	if (numStack.empty())
 	{
-		std::cout << numStack.top() << std::endl;
+		std::cout << result << std::endl;
+	}
+	else
+	{
+		std::cout << "Error: Not enough operators." << std::endl;
 	}
 }
 
-// splits a char array into a string stack
-void	RPN::split( char *s ) {
+// splits a single string into a string stack
+bool	RPN::split( std::string s ) {
 	int	i = 0;
 
 	while (s[i])
 	{
 		i++;
-	} // reverse iterate through array to load stack in correct order
-	for (int j = i; j >= 0; j--)
+	}
+	if (!i)
 	{
-		if (s[j] == ' ' && s[j + 1] != ' ' && s[j + 1])
+		std::cout << "Error: No values in stack." << std::endl;
+		return (false);
+	}
+	for (int j = i; j >= 0; j--) // reverse iterate through array to load stack in correct order
+	{
+		if (isspace(s[j]) && !isspace(s[j + 1]) && s[j + 1])
 		{
 			inputs.push(&s[j + 1]);
 		}
-		if (s[j] != ' ' && s[j + 1] == ' ')
+		if (!isspace(s[j]) && isspace(s[j + 1]))
 		{
 			s[j + 1] = 0;
 		}
@@ -154,4 +191,5 @@ void	RPN::split( char *s ) {
 	{
 		inputs.push(&s[0]);
 	}
+	return (true);
 }

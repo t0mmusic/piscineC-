@@ -22,8 +22,9 @@ class RPN {
 		void	process(  );
 		bool	isOp( std::string s );
 		bool	isVal( std::string s );
-		void	split( char *s );
+		bool	split( std::string );
 		float	stof( std::string s );
+		void	testCases( int val, std::string s);
 };
 
 #endif
