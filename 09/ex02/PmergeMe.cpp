@@ -60,7 +60,6 @@ int	PmergeMe::importArray( int ac, char **av ) {
 			d.push_back(atoi(av[i]));
 		}
 	}
-	std::cout << i << std::endl;
 	if (i == 2)
 	{
 		return (2);

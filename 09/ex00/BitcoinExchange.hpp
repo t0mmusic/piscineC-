@@ -7,10 +7,9 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
 #include <map>
 
-#define CSV_FILE "./data.csv"
+#define CSV_FILE "../utils/data.csv"
 
 class BitcoinExchange {
 	private:
@@ -22,13 +21,16 @@ class BitcoinExchange {
 		BitcoinExchange( char *file_in );
 		~BitcoinExchange();
 
-		void	importCsv();
+		bool	importCsv();
 		void	importCompare( char *file_in );
 
+		bool	exists(const char *name);
 		bool 	validate_date( std::string date );
 		bool	validate_input( std::string value );
 		int		dateToInt( std::string date );
 		float	findClosestDate( std::string date );
+		void	evaluate( std::string line );
+		void	test_data();
 };
 
 #endif
