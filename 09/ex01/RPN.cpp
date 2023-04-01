@@ -10,10 +10,11 @@ RPN::RPN() {
 	testCases(7, "1 1 + + +");
 	testCases(8, "1 + 1");
 	testCases(9, "2 5 * 4 + 3 2 * 1 + / ");
-	testCases(9, "1 2 3 * + 4 5 6 7 + + - +");
-	testCases(9, "-9 1.5 *");
-	testCases(9, "1");
-	testCases(9, "a");
+	testCases(10, "1 2 3 * + 4 5 6 7 + + - +");
+	testCases(11, "-9 1.5 *");
+	testCases(12, "1");
+	testCases(13, "a");
+	testCases(14, "*");
 }
 
 RPN::RPN( char *s ) {
@@ -23,7 +24,18 @@ RPN::RPN( char *s ) {
 	}
 }
 
+RPN::RPN( const RPN &cpy ) {
+	numStack = cpy.numStack;
+	inputs = cpy.inputs;
+}
+
 RPN::~RPN() { }
+
+RPN &RPN::operator=( const RPN &cpy ) {
+	numStack = cpy.numStack;
+	inputs = cpy.inputs;
+	return (*this);
+}
 
 // test cases for evaluation
 void	RPN::testCases( int val, std::string s) {

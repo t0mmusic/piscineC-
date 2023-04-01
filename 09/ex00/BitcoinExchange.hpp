@@ -18,8 +18,11 @@ class BitcoinExchange {
 	protected:
 	public:
 		BitcoinExchange();
+		BitcoinExchange( const BitcoinExchange &cpy );
 		BitcoinExchange( char *file_in );
 		~BitcoinExchange();
+
+		BitcoinExchange	&operator=( const BitcoinExchange &cpy );
 
 		bool	importCsv();
 		void	importCompare( char *file_in );

@@ -16,6 +16,15 @@ BitcoinExchange::BitcoinExchange( char *file_in ) {
 
 BitcoinExchange::~BitcoinExchange() { }
 
+BitcoinExchange::BitcoinExchange( const BitcoinExchange &cpy ) {
+	csv = cpy.csv;
+}
+
+BitcoinExchange	&BitcoinExchange::operator=( const BitcoinExchange &cpy ) {
+	csv = cpy.csv;
+	return (*this);
+}
+
 void	BitcoinExchange::test_data() {
 	evaluate("2011-01-03 | 3");
 	evaluate("2011-01-03 | 2");

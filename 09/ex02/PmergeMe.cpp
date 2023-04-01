@@ -4,7 +4,7 @@ PmergeMe::PmergeMe() {
 	std::srand(unsigned(std::time(NULL)));
 	for (size_t i = 0; i < 3000; i++)
 	{
-		int	c = std::rand() % 10000;
+		int	c = std::rand() % 100000;
 		v.push_back(c);
 		d.push_back(c);
 	}
@@ -38,11 +38,30 @@ PmergeMe::PmergeMe( int ac, char **av ) {
 	printTime(d.size(), "std::deque ");
 }
 
+PmergeMe::PmergeMe( const PmergeMe &cpy ) {
+	v = cpy.v;
+	d = cpy.d;
+	vTest = cpy.vTest;
+	dTest = cpy.dTest;
+	start = cpy.start;
+	end = cpy.end;
+}
+
 PmergeMe::~PmergeMe() {
 	if (v != vTest || d != dTest)
 	{
 		std::cout << "Sorting Failed!" << std::endl;
 	}
+}
+
+PmergeMe &PmergeMe::operator=( const PmergeMe &cpy ) {
+	v = cpy.v;
+	d = cpy.d;
+	vTest = cpy.vTest;
+	dTest = cpy.dTest;
+	start = cpy.start;
+	end = cpy.end;
+	return (*this);
 }
 
 int	PmergeMe::importArray( int ac, char **av ) {

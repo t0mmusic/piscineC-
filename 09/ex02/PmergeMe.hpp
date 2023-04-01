@@ -22,8 +22,11 @@ class PmergeMe {
 	protected:
 	public:
 		PmergeMe();
+		PmergeMe( const PmergeMe &cpy );
 		PmergeMe( int ac, char **av );
 		~PmergeMe();
+
+		PmergeMe &operator=( const PmergeMe &cpy );
 
 		int		importArray( int ac, char **av );
 		void	printBeforeAfter( );

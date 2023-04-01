@@ -14,8 +14,11 @@ class RPN {
 	protected:
 	public:
 		RPN();
+		RPN( const RPN &cpy );
 		RPN( char *s );
 		~RPN();
+
+		RPN &operator=( const RPN &cpy );
 
 		bool	stackMaths( char op );
 		float	opVals( float val1, float val2, char op );
